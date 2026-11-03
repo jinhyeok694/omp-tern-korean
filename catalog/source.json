@@ -1,6 +1,6 @@
 {
 	"version": 1,
-	"omp": "18.16.0",
+	"omp": "18.15.0",
 	"strings": [
 		{
 			"en": "!op read op://dev/github/token",
@@ -382,16 +382,6 @@
 			]
 		},
 		{
-			"en": "/btw Steering Inject",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/settings.ts"
-			],
-			"contexts": [
-				"label"
-			]
-		},
-		{
 			"en": "/btw answer ready · /btw to read it",
 			"kind": "exact",
 			"files": [
@@ -424,26 +414,6 @@
 		{
 			"en": "/btw is still answering in the background · /btw to reopen it",
 			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/btw-controller.ts"
-			],
-			"contexts": [
-				"showStatus()"
-			]
-		},
-		{
-			"en": "/btw prompt not sent",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/btw-controller.ts"
-			],
-			"contexts": [
-				"showStatus()"
-			]
-		},
-		{
-			"en": "/btw prompt not sent · {0} to retry",
-			"kind": "template",
 			"files": [
 				"pi-coding-agent/src/modes/controllers/btw-controller.ts"
 			],
@@ -4809,16 +4779,6 @@
 			]
 		},
 		{
-			"en": "Ask for up to four distinct predictions instead of one, most likely first. The ghost text shows the first one your draft matches; after inserting one, press {0} again to pick another. The same single request returns a few more output tokens",
-			"kind": "template",
-			"files": [
-				"pi-coding-agent/src/modes/settings.ts"
-			],
-			"contexts": [
-				"return"
-			]
-		},
-		{
 			"en": "Ask on exit",
 			"kind": "exact",
 			"files": [
@@ -8705,16 +8665,6 @@
 			],
 			"contexts": [
 				"Error()"
-			]
-		},
-		{
-			"en": "Composer prediction requests, by how they settled.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/composer-prediction-telemetry.ts"
-			],
-			"contexts": [
-				"description"
 			]
 		},
 		{
@@ -16050,16 +16000,6 @@
 			]
 		},
 		{
-			"en": "Hindsight Global Scope",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/hindsight/settings.ts"
-			],
-			"contexts": [
-				"label"
-			]
-		},
-		{
 			"en": "Hindsight Mental Model Auto-Seed",
 			"kind": "exact",
 			"files": [
@@ -16964,26 +16904,6 @@
 			]
 		},
 		{
-			"en": "Inject into main",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/overlays/btw-history-panel.ts"
-			],
-			"contexts": [
-				"actionButton()"
-			]
-		},
-		{
-			"en": "Inject into main session",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/overlays/btw-inject.ts"
-			],
-			"contexts": [
-				"var:BTW_INJECT_LABEL"
-			]
-		},
-		{
 			"en": "Inject one steering notice when a subagent crosses its soft request budget, asking it to wrap up before the 1.5x forced-yield stop.",
 			"kind": "exact",
 			"files": [
@@ -16991,16 +16911,6 @@
 			],
 			"contexts": [
 				"description"
-			]
-		},
-		{
-			"en": "Injected into main session",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/overlays/btw-inject.ts"
-			],
-			"contexts": [
-				"var:BTW_INJECTED_LABEL"
 			]
 		},
 		{
@@ -18625,16 +18535,6 @@
 				"pi-coding-agent/src/modes/interactive-mode.ts"
 			],
 			"contexts": []
-		},
-		{
-			"en": "Let retain and learn take scope: global, which stores a memory without the project tag so every project recalls it. Needs global or per-project-tagged scoping",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/hindsight/settings.ts"
-			],
-			"contexts": [
-				"description"
-			]
 		},
 		{
 			"en": "Let standalone jevify append its hidden bulk-judge classification notice",
@@ -25522,16 +25422,6 @@
 			]
 		},
 		{
-			"en": "Offered predictions the composer painted, counted on first display.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/composer-prediction-telemetry.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
 			"en": "Older HTTP servers",
 			"kind": "exact",
 			"files": [
@@ -26440,7 +26330,6 @@
 				"pi-tui/src/tools/fetch.ts"
 			],
 			"contexts": [
-				"fg()",
 				"span()"
 			]
 		},
@@ -27665,16 +27554,6 @@
 			],
 			"contexts": [
 				"description"
-			]
-		},
-		{
-			"en": "Prediction Alternatives",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/settings.ts"
-			],
-			"contexts": [
-				"label"
 			]
 		},
 		{
@@ -29473,16 +29352,6 @@
 			],
 			"contexts": [
 				"label"
-			]
-		},
-		{
-			"en": "Record<string, unknown>",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/status-line/startup.ts"
-			],
-			"contexts": [
-				"segmentOptions?"
 			]
 		},
 		{
@@ -32944,16 +32813,6 @@
 			]
 		},
 		{
-			"en": "Send a /btw answer's steering prompt to the main session",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/app-keybindings.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
 			"en": "Send follow-up message",
 			"kind": "exact",
 			"files": [
@@ -34710,16 +34569,6 @@
 			]
 		},
 		{
-			"en": "Shown predictions, by whether the user inserted them.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/composer-prediction-telemetry.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
 			"en": "Sign in",
 			"kind": "exact",
 			"files": [
@@ -35489,16 +35338,6 @@
 			],
 			"contexts": [
 				"description"
-			]
-		},
-		{
-			"en": "Some lines truncated to",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/tools/output-meta.ts"
-			],
-			"contexts": [
-				"var:COLUMN_TRUNCATION_CLAUSE"
 			]
 		},
 		{
@@ -38516,26 +38355,6 @@
 			],
 			"contexts": [
 				"head"
-			]
-		},
-		{
-			"en": "Time from a prediction first being displayed to the user inserting it.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/composer-prediction-telemetry.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Time from a prediction request to its settlement.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/composer-prediction-telemetry.ts"
-			],
-			"contexts": [
-				"description"
 			]
 		},
 		{
@@ -42545,16 +42364,6 @@
 			]
 		},
 		{
-			"en": "a /btw prompt is still sending",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/btw-controller.ts"
-			],
-			"contexts": [
-				"return"
-			]
-		},
-		{
 			"en": "a branch is already in progress",
 			"kind": "exact",
 			"files": [
@@ -45477,16 +45286,6 @@
 			]
 		},
 		{
-			"en": "number | null",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/status-line/startup.ts"
-			],
-			"contexts": [
-				"speculationPercent"
-			]
-		},
-		{
 			"en": "of the total",
 			"kind": "exact",
 			"files": [
@@ -47247,16 +47046,6 @@
 			]
 		},
 		{
-			"en": "to inject",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/overlays/btw-panel.ts"
-			],
-			"contexts": [
-				"label"
-			]
-		},
-		{
 			"en": "to retry",
 			"kind": "exact",
 			"files": [
@@ -48408,6 +48197,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/tools/edit.ts"
+			],
+			"contexts": [
+				"fg()"
+			]
+		},
+		{
+			"en": "… (streaming)",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/write.ts"
 			],
 			"contexts": [
 				"fg()"
