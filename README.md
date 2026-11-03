@@ -49,7 +49,7 @@ omp 18.11.0 이상이 필요합니다. omp 18.15–18.16, Tern 0.9.9(Windows)에
 ## 업데이트
 
 - **번역:** omp 쪽과 Tern 쪽이 각각 하루에 한 번 이 저장소의 `catalog/ko.json`, `tern-plugin/ko.json`을 받습니다(`If-None-Match`로 바뀐 경우에만 내려받습니다). 받은 번역표의 `revision`이 플러그인에 들어 있는 것보다 높을 때만 씁니다. 저장 위치는 `~/.omp/agent/cache/omp-tern-korean/`와 Tern 플러그인 데이터 폴더입니다.
-- **코드:** omp 설정 `marketplace.autoUpdate: auto`를 켜 두면 omp가 시작할 때 플러그인도 업그레이드합니다. 업그레이드로 플러그인 폴더가 바뀌면 다음 실행 때 Tern 쪽 연결을 새 폴더로 옮깁니다.
+- **코드:** omp 설정 `marketplace.autoUpdate: auto`를 켜 두면 omp가 시작할 때 플러그인도 업그레이드합니다. Tern 쪽은 omp의 버전별 플러그인 폴더가 아니라 `~/.omp/agent/cache/omp-tern-korean/tern-plugin/`에 복사해 연결하고 omp가 시작할 때마다 그 복사본을 새로 고칩니다. 그래서 업그레이드해도 다시 연결할 필요가 없고, Windows에서 Tern이 잡고 있는 폴더 때문에 업그레이드가 실패하지도 않습니다.
 
 ## 환경 변수
 

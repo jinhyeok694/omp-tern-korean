@@ -282,7 +282,7 @@ export default function ompTernKorean(pi: ExtensionAPI): void {
 		if (UPDATES && !shared.update) void startUpdate();
 		const ternExe = process.env.TERN_EXE;
 		if (IN_TERN && TERN_LINK && ternExe && !shared.ternLink) {
-			shared.ternLink = ensureTernPlugin(TERN_PLUGIN_DIR, runTernWith(ternExe)).then(result => {
+			shared.ternLink = ensureTernPlugin(TERN_PLUGIN_DIR, path.join(cacheDir, "tern-plugin"), runTernWith(ternExe)).then(result => {
 				shared.ternLinkResult = result;
 				return result;
 			});
