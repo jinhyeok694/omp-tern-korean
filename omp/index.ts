@@ -219,7 +219,9 @@ function describeUpdate(): string {
 		case "not-modified":
 			return "새 번역이 없습니다";
 		case "older":
-			return `받은 카탈로그(${result.revision})가 지금 것보다 오래되었습니다`;
+			return result.revision === catalog?.revision
+				? "최신 번역을 쓰고 있습니다"
+				: `받은 카탈로그(${result.revision})가 지금 것보다 오래되었습니다`;
 		case "updated":
 			return `새 번역을 받았습니다 (${result.catalog.revision})`;
 		case "failed":
