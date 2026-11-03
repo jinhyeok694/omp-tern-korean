@@ -154,6 +154,36 @@ tern.timer(3000, function()
 end)
 tern.timer(RELOAD_POLL_MS, pollCachedRevision)
 
+-- 글꼴: Tern의 UI 글꼴 변수(--sans)에서 Pretendard를 먼저 씁니다. 설치되어 있지 않으면 원래 글꼴(Geist)로
+-- 그립니다. 플러그인은 글꼴 파일을 불러올 수 없어서(@font-face 무시) 시스템에 설치된 Pretendard를 씁니다.
+local FONT_KEY = "pretendard_font"
+local FONT_CSS = [[
+* {
+	--sans: "Pretendard", "Pretendard Variable", "Pretendard GOV", "Pretendard JP", "Geist", -apple-system, "SF Pro Text", system-ui, sans-serif !important;
+}
+]]
+
+local function fontEnabled(): boolean
+	return tern.kv.get(FONT_KEY) ~= false
+end
+
+local function applyFont()
+	tern.css("font", if fontEnabled() then FONT_CSS else "")
+end
+
+applyFont()
+
+tern.command({
+	id = "toggle_font",
+	title = "Pretendard 글꼴 켜기/끄기",
+	group = GROUP,
+	run = function(cx)
+		tern.kv.set(FONT_KEY, not fontEnabled())
+		applyFont()
+		cx:toast("info", if fontEnabled() then "Pretendard 글꼴을 켰습니다." else "Pretendard 글꼴을 껐습니다.")
+	end,
+})
+
 tern.command({
 	id = "toggle_rows",
 	title = "한국어 명령 행 켜기/끄기",

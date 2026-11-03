@@ -15,6 +15,7 @@ import * as os from "node:os";
 import * as path from "node:path";
 import type { ExtensionAPI, ExtensionContext } from "@oh-my-pi/pi-coding-agent";
 import { bundledCatalogPath, type Catalog, type CatalogFile, createCatalog, parseCatalog } from "./catalog.ts";
+import { koreanizeRequest } from "./korean-prompts.ts";
 import { ensureTernPlugin, runTernWith, type TernLinkResult } from "./tern-link.ts";
 import { DEFAULT_APC_LIMIT, FrameTranslator, TSP_PREFIX, translateWrite } from "./tsp.ts";
 import { checkForUpdate, DEFAULT_CATALOG_URL, readCachedCatalog, type UpdateResult } from "./update.ts";
@@ -60,6 +61,8 @@ const UPDATES = process.env.OMP_KO_UPDATE !== "0";
 const CATALOG_URL = process.env.OMP_KO_CATALOG_URL || DEFAULT_CATALOG_URL;
 /** `0` stops this extension from linking the Tern half into Tern. */
 const TERN_LINK = process.env.OMP_KO_TERN !== "0";
+/** `0` keeps session titles and recaps in the model's default language (English). */
+const KOREAN_PROMPTS = process.env.OMP_KO_PROMPTS !== "0";
 const TERN_PLUGIN_DIR = path.join(import.meta.dir, "..", "tern-plugin");
 
 let catalog: Catalog | undefined;
@@ -270,6 +273,9 @@ export default function ompTernKorean(pi: ExtensionAPI): void {
 		return shared.update;
 	};
 
+	// Session titles and recaps are generated text omp shows in its UI: ask for them in Korean.
+	pi.on("before_provider_request", event => (KOREAN_PROMPTS && shared.enabled ? koreanizeRequest(event.payload) : undefined));
+
 	pi.on("session_start", () => {
 		if (UPDATES && !shared.update) void startUpdate();
 		const ternExe = process.env.TERN_EXE;
@@ -328,6 +334,7 @@ export default function ompTernKorean(pi: ExtensionAPI): void {
 				`번역 업데이트: ${describeUpdate()}`,
 				`Tern 프레임 번역: ${tsp ? "동작 중" : "꺼짐 (대상이 없습니다)"}, 프레임 ${shared.frames}개 중 ${shared.translatedFrames}개 번역, 평균 ${average.toFixed(3)} ms`,
 				`Tern 플러그인: ${describeTernLink()}`,
+				`세션 제목·요약: ${KOREAN_PROMPTS ? "한국어로 요청합니다" : "꺼짐 (OMP_KO_PROMPTS=0)"}`,
 				`설정·슬래시 명령: ${IN_TERN ? "Tern에서는 프레임에서 번역합니다" : `설정 ${settingsCount}개, 슬래시 명령 ${slashCount}개`}`,
 			];
 			if (shared.lastError) lines.push(`마지막 오류: ${shared.lastError.split("\n")[0]}`);

@@ -56,6 +56,8 @@
 | steer / follow-up / queue | 중간 지시 / 후속 메시지 / 대기열 |
 | job, task | 작업 |
 | usage / quota / limit | 사용량 / 할당량 / 한도 |
+| usage limit (요금제 5시간·주간 한도) / rate limit (HTTP) | 사용량 한도 / 속도 제한 |
+| saved reset (쓰면 없어지는 크레딧) / reset (상태) | 저장된 리셋 / 초기화 |
 | workspace / directory | 작업 영역 / 디렉터리 |
 | pane / block / tab / window | 패널 / 블록 / 탭 / 창 |
 | enable / disable (동작) | 켜기 / 끄기 |

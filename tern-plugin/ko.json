@@ -1,6 +1,6 @@
 {
 	"version": 1,
-	"revision": 2026110303,
+	"revision": 2026110304,
 	"actions": {
 		"add_remote_host": "원격 호스트 추가…",
 		"appearance:dark": "어두운 화면 모드",
