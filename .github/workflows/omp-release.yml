@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: omp version (default: latest on npm)
+        description: "omp version (default: latest on npm)"
         required: false
 
 permissions:
