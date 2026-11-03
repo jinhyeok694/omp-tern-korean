@@ -1,0 +1,8 @@
+{
+	"version": 1,
+	"note": "Lines whose English words are intentional (subcommand names, option values, product names). tools/residual.ts does not count them.",
+	"lines": [
+		"Manage SSH hosts (add, list, remove)",
+		"Toggle fast service (OpenAI service_tier=priority or ultrafast, Anthropic speed=fast, Google priority)"
+	]
+}

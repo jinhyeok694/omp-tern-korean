@@ -8,8 +8,28 @@
  * working when omp moves its components around.
  */
 
+import {
+	type CopyKey,
+	copyKey,
+	firstSpanStyle,
+	isObject,
+	isSpan,
+	isVerbatimSpan,
+	type JsonObject,
+	type MaskedSpans,
+	maskRow,
+	maskSpans,
+	type RowLine,
+	rebuildSpans,
+	rowText,
+	showPlaceholders,
+	splitRowKorean,
+} from "./sequence.ts";
+
 export const TSP_PREFIX = "\x1b_tsp;";
 const ST = "\x1b\\";
+/** Role of the text node holding a failed request's message in omp's error card. */
+const ERROR_MESSAGE_ROLE = "omp.error.message";
 /** omp's own optimistic `hello` assumes this limit before Tern replies, so Tern always accepts it. */
 export const DEFAULT_APC_LIMIT = 65_536;
 
@@ -87,12 +107,41 @@ const DENY_PROPS: Record<string, true> = {
 };
 
 type Json = null | boolean | number | string | Json[] | { [key: string]: Json };
-type JsonObject = { [key: string]: Json };
+
+/** Called for every UI text unit with omp's text and what is shown; placeholders appear as `{n}`. */
+export type Observe = (before: string, after: string) => void;
 
 interface NodeState {
 	kind: string;
 	/** omp's untranslated text, kept only for nodes whose `text` this module translated. */
 	original?: string;
+	/** The row whose sentence this text node is part of. */
+	row?: RowState;
+}
+
+/** A row translated as one sentence (`Press [enter] to begin`). */
+interface RowState {
+	id: string;
+	children: { id: string; kind: string }[];
+	/** omp's current copy of each text child, by child index. */
+	texts: Map<number, string>;
+	/** Per text child index, the span style it was sent with; absent when it was a plain string. */
+	styles: Map<number, JsonObject>;
+	/** Per text child index, the prop omp keeps its copy in. */
+	keys: Map<number, CopyKey>;
+	/** Text nodes this module added to gaps that had none, by gap index. */
+	created: Map<number, string>;
+	/** Style of the text nodes this module adds. */
+	style: JsonObject;
+}
+
+/** A row ready to be drawn as one translated sentence. */
+interface RowPlan {
+	state: RowState;
+	line: RowLine;
+	/** Korean per gap between keycaps. */
+	segments: string[];
+	korean: string;
 }
 
 /** Node kinds per surface, so `text`/`splice` ops know what they edit. */
@@ -102,11 +151,15 @@ const MAX_REMEMBERED_NODES = 200_000;
 export class FrameTranslator {
 	readonly #surfaces = new Map<string, SurfaceMemory>();
 	#translate: Translate;
+	readonly #observe: Observe | undefined;
 	/** Whether the frame being translated changed. */
 	#changed = false;
+	/** Above zero while pieces of a line translated as a whole are processed: they are not reported on their own. */
+	#muted = 0;
 
-	constructor(translate: Translate) {
+	constructor(translate: Translate, observe?: Observe) {
 		this.#translate = translate;
+		this.#observe = observe;
 	}
 
 	setTranslate(translate: Translate): void {
@@ -117,16 +170,82 @@ export class FrameTranslator {
 		this.#surfaces.delete(sf);
 	}
 
-	#text(text: string): string {
+	#report(before: string, after: string): void {
+		if (this.#muted === 0) this.#observe?.(showPlaceholders(before), showPlaceholders(after));
+	}
+
+	/** The Korean for a whole masked line, or undefined. */
+	#whole(masked: string): string | undefined {
+		const korean = this.#translate(masked);
+		return korean === undefined || korean === masked ? undefined : korean;
+	}
+
+	#text(text: string, report = true): string {
 		const translated = this.#translate(text);
-		if (translated === undefined || translated === text) return text;
+		const shown = translated === undefined ? text : translated;
+		if (report) this.#report(text, shown);
+		if (shown === text) return text;
 		this.#changed = true;
-		return translated;
+		return shown;
+	}
+
+	#span(span: JsonObject, report: boolean): JsonObject {
+		if (isVerbatimSpan(span)) return span;
+		const t = this.#text(span.t as string, report);
+		return t === span.t ? span : { ...span, t };
+	}
+
+	/** A span of an error message: translated when the catalog knows the whole sentence, mono or not. */
+	#errorSpan(span: JsonObject): JsonObject {
+		const t = this.#text(span.t as string, true);
+		return t === span.t ? span : { ...span, t };
+	}
+
+	/**
+	 * Translates a span array: as one line when keycaps, numbers, code or icons split its words, so
+	 * the Korean can put them where Korean word order needs them; piece by piece otherwise.
+	 */
+	#spans(spans: JsonObject[]): JsonObject[] {
+		if (spans.length < 2) return spans.map(span => this.#span(span, true));
+		const masked = maskSpans(spans, false);
+		if (!masked || (masked.groups.length === 0 && masked.copySpans < 2)) return spans.map(span => this.#span(span, true));
+		const whole = (): JsonObject[] | undefined => {
+			let used: MaskedSpans = masked;
+			let korean = this.#whole(masked.masked);
+			if (korean === undefined) {
+				const withCode = maskSpans(spans, true);
+				if (withCode?.codeStyle) {
+					korean = this.#whole(withCode.masked);
+					used = withCode;
+				}
+			}
+			if (korean === undefined) return undefined;
+			this.#changed = true;
+			this.#report(used.masked, korean);
+			return rebuildSpans(korean, used);
+		};
+		const pieces = (): JsonObject[] => {
+			const out = spans.map(span => this.#span(span, false));
+			this.#report(masked.masked, maskSpans(out, false)?.masked ?? masked.masked);
+			return out;
+		};
+		if (masked.groups.length > 0 || masked.uniformStyle) return whole() ?? pieces();
+		// Differently styled pieces without keycaps: piece by piece keeps their emphasis; the whole line
+		// is used only when a piece would stay English.
+		const each = spans.map(span => this.#span(span, false));
+		const leftover = each.some((span, index) => span === spans[index] && !isVerbatimSpan(span) && /[A-Za-z]{2}/.test(span.t as string));
+		if (leftover) {
+			const rebuilt = whole();
+			if (rebuilt) return rebuilt;
+		}
+		this.#report(masked.masked, maskSpans(each, false)?.masked ?? masked.masked);
+		return each;
 	}
 
 	/** Translates a TspText: a string or spans. */
 	#tspText(value: Json): Json {
 		if (typeof value === "string") return this.#text(value);
+		if (Array.isArray(value) && value.every(isSpan)) return this.#spans(value as JsonObject[]);
 		if (Array.isArray(value)) return value.map(item => this.#value(item, ""));
 		return value;
 	}
@@ -139,16 +258,12 @@ export class FrameTranslator {
 		if (Array.isArray(value)) {
 			// Spans are copy wherever they sit (a table cell keyed by a column id such as `keys` or
 			// `action`); their style tokens, not the field name, mark keycaps, code and paths.
-			if (denied && !value.some(isSpan)) return value;
+			if (value.length > 0 && value.every(isSpan)) return this.#spans(value as JsonObject[]);
+			if (denied) return value;
 			return value.map(item => this.#value(item, key));
 		}
 		if (value === null || typeof value !== "object") return value;
-		if (isSpan(value)) {
-			if (typeof value.s === "string" && value.s.split(" ").some(token => VERBATIM_SPAN_TOKENS[token] === true))
-				return value;
-			const t = this.#text(value.t as string);
-			return t === value.t ? value : { ...value, t };
-		}
+		if (isSpan(value)) return this.#span(value as JsonObject, true);
 		// A node carried inside a prop (a hovercard).
 		if (typeof value.k === "string" && ("p" in value || "c" in value)) return this.#propNode(value);
 		if (denied) return value;
@@ -182,6 +297,12 @@ export class FrameTranslator {
 				out[name] = raw;
 				continue;
 			}
+			// omp sets a failed request's message in mono. A sentence the catalog knows (omp's own
+			// connection errors) translates; anything else (a provider's raw error, a path) stays.
+			if (name === "spans" && props.role === ERROR_MESSAGE_ROLE && Array.isArray(raw)) {
+				out[name] = raw.map(span => (isSpan(span) ? this.#errorSpan(span as JsonObject) : span));
+				continue;
+			}
 			out[name] = this.#value(raw, name);
 		}
 		return out;
@@ -205,42 +326,197 @@ export class FrameTranslator {
 		}
 		const out: JsonObject = { ...node };
 		if (isObject(node.p)) out.p = this.#props(kind, node.p, state);
-		if (Array.isArray(node.c)) out.c = node.c.map(child => (isObject(child) ? this.#node(memory, child) : child));
+		if (!Array.isArray(node.c)) return out;
+		const row = kind === "row" && typeof node.id === "string" ? this.#rowLine(node.id, node.c) : undefined;
+		if (row) this.#muted++;
+		out.c = node.c.map(child => (isObject(child) ? this.#node(memory, child) : child));
+		if (row) {
+			this.#muted--;
+			out.c = this.#applyRow(memory, row, out.c as JsonObject[]);
+		}
 		return out;
 	}
 
-	#op(memory: SurfaceMemory, op: Json[]): Json[] {
+	// ─── Rows ──────────────────────────────────────────────────────────────
+
+	/** A row whose sentence keycap nodes split, with its Korean; undefined when it has none or no translation. */
+	#rowLine(id: string, children: Json[]): RowPlan | undefined {
+		if (!children.every(child => isObject(child) && typeof child.id === "string" && typeof child.k === "string")) return undefined;
+		const nodes = children as JsonObject[];
+		const texts = new Map<number, string>();
+		const styles = new Map<number, JsonObject>();
+		const keys = new Map<number, CopyKey>();
+		nodes.forEach((child, index) => {
+			if (child.k !== "text") return;
+			const text = rowText(child);
+			if (text !== undefined) texts.set(index, text);
+			keys.set(index, copyKey(child.p));
+			const style = firstSpanStyle(child);
+			if (style) styles.set(index, style);
+		});
+		const line = maskRow(nodes, texts);
+		if (!line) return undefined;
+		const korean = this.#whole(line.masked);
+		const segments = korean === undefined ? undefined : splitRowKorean(korean, line);
+		if (!korean || !segments) return undefined;
+		const state: RowState = {
+			id,
+			children: nodes.map(child => ({ id: child.id as string, kind: child.k as string })),
+			texts,
+			styles,
+			keys,
+			created: new Map(),
+			style: line.style,
+		};
+		return { state, line, segments, korean };
+	}
+
+	/** Props that give text child `index` the copy `text`, in the prop and style omp sent it with. */
+	#copy(state: RowState, index: number, text: string): JsonObject {
+		const style = state.styles.get(index);
+		const key = state.keys.get(index) ?? "text";
+		return { [key]: style || key === "spans" ? [{ ...style, t: text }] : text };
+	}
+
+	/** Props of a text node this module adds to a row. */
+	#created(state: RowState, text: string): JsonObject {
+		return { spans: [{ ...state.style, t: text }] };
+	}
+
+	/** Puts each gap's Korean into the row's text children, adding a text node where a gap has none. */
+	#applyRow(memory: SurfaceMemory, row: RowPlan, children: JsonObject[]): JsonObject[] {
+		const { state, line, segments, korean } = row;
+		const out = children.map(child => ({ ...child, p: isObject(child.p) ? { ...child.p } : {} }) as JsonObject);
+		const inserts = new Map<number, JsonObject[]>();
+		line.gaps.forEach((gap, index) => {
+			const segment = segments[index] ?? "";
+			gap.forEach((childIndex, position) => {
+				const text = position === 0 ? segment : "";
+				const props = out[childIndex]!.p as JsonObject;
+				Object.assign(props, this.#copy(state, childIndex, text));
+				if (text === "") props.hidden = true;
+			});
+			if (gap.length > 0 || segment === "") return;
+			const id = `${state.id}~ko${index}`;
+			const before = index < line.groups.length ? line.groups[index]![0]! : line.groups[line.groups.length - 1]!.at(-1)! + 1;
+			inserts.set(before, [...(inserts.get(before) ?? []), { id, k: "text", p: this.#created(state, segment) }]);
+			state.created.set(index, id);
+			memory.set(id, { kind: "text" });
+		});
+		for (const child of state.children) {
+			const childState = memory.get(child.id);
+			if (childState && child.kind === "text") childState.row = state;
+		}
+		const result: JsonObject[] = [];
+		out.forEach((child, index) => {
+			result.push(...(inserts.get(index) ?? []), child);
+		});
+		result.push(...(inserts.get(out.length) ?? []));
+		this.#changed = true;
+		this.#report(line.masked, korean);
+		return result;
+	}
+
+	/** Re-translates a row after omp changed one of its text children; returns the ops that redraw it. */
+	#rowUpdate(state: RowState, childId: string, text: string | undefined, otherProps: JsonObject): Json[][] {
+		const index = state.children.findIndex(child => child.id === childId);
+		if (text !== undefined) state.texts.set(index, text);
+		else state.texts.delete(index);
+		const stub = state.children.map(child => ({ id: child.id, k: child.kind }) as JsonObject);
+		const line = text === undefined ? undefined : maskRow(stub, state.texts);
+		const korean = line ? this.#whole(line.masked) : undefined;
+		const segments = line && korean ? splitRowKorean(korean, line) : undefined;
+		const ops: Json[][] = [];
+		const set = (id: string, props: JsonObject) => ops.push(["set", id, id === childId ? { ...otherProps, ...props } : props]);
+		this.#changed = true;
+		if (!line || !segments) {
+			// No whole-line translation for the new text: each piece on its own.
+			state.children.forEach((child, childIndex) => {
+				if (child.kind !== "text") return;
+				const original = state.texts.get(childIndex);
+				if (original === undefined) return;
+				set(child.id, { ...this.#copy(state, childIndex, this.#text(original)), hidden: false });
+			});
+			for (const id of state.created.values()) set(id, { ...this.#created(state, ""), hidden: true });
+			if (!state.children.some(child => child.id === childId && child.kind === "text") || text === undefined) ops.push(["set", childId, otherProps]);
+			return ops;
+		}
+		this.#report(line.masked, korean!);
+		line.gaps.forEach((gap, gapIndex) => {
+			const segment = segments[gapIndex] ?? "";
+			gap.forEach((childIndex, position) => {
+				const value = position === 0 ? segment : "";
+				set(state.children[childIndex]!.id, { ...this.#copy(state, childIndex, value), hidden: value === "" });
+			});
+			const created = state.created.get(gapIndex);
+			if (created) set(created, { ...this.#created(state, segment), hidden: segment === "" });
+			else if (gap.length === 0 && segment !== "") {
+				const id = `${state.id}~ko${gapIndex}`;
+				const beforeIndex = gapIndex < line.groups.length ? line.groups[gapIndex]![0]! : line.groups[line.groups.length - 1]!.at(-1)! + 1;
+				const before = state.children[beforeIndex]?.id ?? null;
+				ops.push(["add", id, state.id, before, { id, k: "text", p: this.#created(state, segment) }]);
+				state.created.set(gapIndex, id);
+			}
+		});
+		return ops;
+	}
+
+	// ─── Ops ───────────────────────────────────────────────────────────────
+
+	#op(memory: SurfaceMemory, op: Json[]): Json[][] {
 		const [name, id] = op;
 		switch (name) {
 			case "add":
-				return isObject(op[4]) ? [op[0]!, op[1]!, op[2]!, op[3]!, this.#node(memory, op[4])] : op;
+				return [isObject(op[4]) ? [op[0]!, op[1]!, op[2]!, op[3]!, this.#node(memory, op[4])] : op];
 			case "set": {
-				if (typeof id !== "string" || !isObject(op[2])) return op;
+				if (typeof id !== "string" || !isObject(op[2])) return [op];
 				const state = memory.get(id);
-				return [name, id, this.#props(state?.kind ?? "", op[2], state)];
+				if (state?.row && ("text" in op[2] || "spans" in op[2])) {
+					const key: CopyKey = "spans" in op[2] ? "spans" : "text";
+					const { [key]: value, ...rest } = op[2];
+					const row = state.row;
+					const index = row.children.findIndex(child => child.id === id);
+					row.keys.set(index, key);
+					const style = firstSpanStyle({ p: { [key]: value ?? "" } });
+					if (style) row.styles.set(index, style);
+					else row.styles.delete(index);
+					const copy = rowText({ p: { [key]: value ?? "" } });
+					return this.#rowUpdate(row, id, copy, this.#props(state.kind, rest, state));
+				}
+				return [[name, id, this.#props(state?.kind ?? "", op[2], state)]];
 			}
 			case "text": {
 				const state = typeof id === "string" ? memory.get(id) : undefined;
-				if (!state || !isCopyKind(state.kind) || typeof op[3] !== "string") return op;
+				if (!state || !isCopyKind(state.kind) || typeof op[3] !== "string") return [op];
+				if (state.row) {
+					const index = state.row.children.findIndex(child => child.id === id);
+					const current = state.row.texts.get(index) ?? "";
+					return this.#rowUpdate(state.row, id as string, op[2] === "append" ? current + op[3] : op[3], {});
+				}
 				if (op[2] === "append") {
 					// omp appends to its own text; only text this module replaced needs rebuilding.
-					if (state.original === undefined) return op;
-					return this.#replace(state, id as string, state.original + op[3]);
+					if (state.original === undefined) return [op];
+					return [this.#replace(state, id as string, state.original + op[3])];
 				}
-				return this.#replace(state, id as string, op[3]);
+				return [this.#replace(state, id as string, op[3])];
 			}
 			case "splice": {
 				const state = typeof id === "string" ? memory.get(id) : undefined;
-				if (state?.original === undefined) return op;
 				const [, , at, del, text] = op;
-				if (typeof at !== "number" || typeof del !== "number" || typeof text !== "string") return op;
-				return this.#replace(state, id as string, state.original.slice(0, at) + text + state.original.slice(at + del));
+				if (typeof at !== "number" || typeof del !== "number" || typeof text !== "string") return [op];
+				if (state?.row) {
+					const index = state.row.children.findIndex(child => child.id === id);
+					const current = state.row.texts.get(index) ?? "";
+					return this.#rowUpdate(state.row, id as string, current.slice(0, at) + text + current.slice(at + del), {});
+				}
+				if (state?.original === undefined) return [op];
+				return [this.#replace(state, id as string, state.original.slice(0, at) + text + state.original.slice(at + del))];
 			}
 			case "del":
 				if (typeof id === "string") memory.delete(id);
-				return op;
+				return [op];
 			default:
-				return op;
+				return [op];
 		}
 	}
 
@@ -263,35 +539,14 @@ export class FrameTranslator {
 			this.#surfaces.set(body.sf, memory);
 		}
 		this.#changed = false;
-		const ops = body.ops.map(op => (Array.isArray(op) ? this.#op(memory, op) : op));
+		const ops = body.ops.flatMap(op => (Array.isArray(op) ? this.#op(memory, op) : [op]));
 		return this.#changed ? { ...body, ops } : undefined;
 	}
 }
 
-const SPAN_FIELDS: Record<string, true> = { t: true, s: true, fx: true, href: true };
 /** Props holding a record whose keys are display labels (`facts: { Model: "…" }`). */
 const RECORD_LABEL_PROPS: Record<string, true> = { facts: true };
-/** Span style tokens whose text is a keycap, code, a path, a number, a link or a glyph: never translated. */
-const VERBATIM_SPAN_TOKENS: Record<string, true> = {
-	key: true,
-	code: true,
-	mono: true,
-	path: true,
-	num: true,
-	link: true,
-	icon: true,
-	typo: true,
-	ins: true,
-	del: true,
-};
 
-function isSpan(value: Json): value is JsonObject {
-	return isObject(value) && typeof value.t === "string" && Object.keys(value).every(field => SPAN_FIELDS[field] === true);
-}
-
-function isObject(value: Json | undefined): value is JsonObject {
-	return value !== null && typeof value === "object" && !Array.isArray(value);
-}
 
 // ─── Wire framing ──────────────────────────────────────────────────────────
 

@@ -167,8 +167,10 @@ export function checkEntry(en: string, ko: string, glossary: Glossary): Finding[
 	if (en.trimEnd().endsWith(".") && !en.trimEnd().endsWith("...") && !/[.…!?]$/.test(ko.trimEnd()))
 		add("warning", "원문은 마침표로 끝납니다");
 	if (!/[.]$/.test(en.trimEnd()) && /[^.]\.$/.test(ko.trimEnd())) add("warning", "원문에 없는 마침표");
-	if (/\.\.\.|…/.test(en) && !ko.includes("…")) add("warning", "말줄임표(…)가 없습니다");
-	if (ko.includes("...")) add("error", "말줄임표는 … 한 글자로 씁니다");
+	// Code spans and command syntax (`completion(x...)`, `<command...>`) keep their dots.
+	const literalFree = (text: string) => text.replace(/`[^`]+`|<[^<>\s]+>|\[[^\]\s]+\]/g, " ");
+	if (/\.\.\.|…/.test(literalFree(en)) && !ko.includes("…")) add("warning", "말줄임표(…)가 없습니다");
+	if (literalFree(ko).includes("...")) add("error", "말줄임표는 … 한 글자로 씁니다");
 
 	const short = en.length <= 24 && !/[.!?]$/.test(en);
 	if (short && displayWidth(ko) > displayWidth(en) * 1.6 + 2) add("warning", `짧은 문구인데 폭이 넓어졌습니다 (${displayWidth(en)} → ${displayWidth(ko)}칸)`);
@@ -221,7 +223,16 @@ function check(files: string[], base: string | undefined): number {
 					findings.push({ level: "error", en: key, ko: catalog.templates[key]!, message: "세 글자 이상인 영어 낱말이 없는 템플릿은 무엇에나 맞습니다" });
 			}
 		}
+		// Rows of text and keycap nodes: the nodes cannot be reordered, so the keycaps keep their order.
+		const rowKeys = new Set(
+			fs.existsSync(OMP_SOURCE) ? readJson<SourceFile>(OMP_SOURCE).strings.filter(entry => entry.contexts.includes("row")).map(entry => entry.en) : [],
+		);
 		for (const en in entries) {
+			if (rowKeys.has(en)) {
+				const order = (entries[en]!.match(/\{\d+\}/g) ?? []).join("");
+				const expected = (en.match(/\{\d+\}/g) ?? []).join("");
+				if (order !== expected) findings.push({ level: "error", en, ko: entries[en]!, message: "키캡 노드 줄입니다: {n}을 원문 순서대로 두십시오" });
+			}
 			if (isTern) {
 				const ko = entries[en]!;
 				if (!HANGUL.test(ko)) findings.push({ level: "error", en, ko, message: "한글이 없습니다" });
