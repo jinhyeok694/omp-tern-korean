@@ -1,0 +1,12 @@
+# 변경 내역
+
+## 0.1.0
+
+첫 공개 버전입니다.
+
+- Tern 안의 omp: omp가 Tern에 보내는 화면 프레임에서 UI 문구를 한국어로 바꿉니다. 대화 내용, 코드, 입력한 글은 바꾸지 않습니다.
+- 일반 터미널의 omp: 설정 항목과 슬래시 명령 설명을 번역합니다.
+- 번역표: omp 18.16.0의 화면 문구를 번역했습니다. 하루에 한 번 GitHub에서 새 번역을 받습니다(`/ko update`로 바로 받기).
+- Tern 플러그인 `ko-kr`: 팔레트에 한국어 명령 행을 더하고, 팔레트 범위 탭과 탭 막대 글자를 바꿉니다. 번역을 매일 새로 받습니다. Tern 안에서 omp를 실행하면 자동으로 연결됩니다.
+- `/ko status|on|off|update`, `Ctrl+Alt+K`.
+- 도구: 화면 문구 추출(`tools/extract-omp.ts`, `tools/extract-tern.ts`), 번역 검사·병합(`tools/catalog.ts`), omp 새 버전마다 번역할 문구를 PR로 올리는 GitHub Actions.

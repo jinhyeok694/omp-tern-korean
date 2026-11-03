@@ -1,0 +1,841 @@
+{
+	"version": 1,
+	"actions": [
+		{
+			"id": "new_tab",
+			"label": "New tab"
+		},
+		{
+			"id": "new_window",
+			"label": "New window"
+		},
+		{
+			"id": "switch_session",
+			"label": "Switch session…"
+		},
+		{
+			"id": "new_session",
+			"label": "New session"
+		},
+		{
+			"id": "rename_session",
+			"label": "Rename session…"
+		},
+		{
+			"id": "lock_session",
+			"label": "Lock session"
+		},
+		{
+			"id": "close_session",
+			"label": "Close session"
+		},
+		{
+			"id": "move_session_up",
+			"label": "Move session up"
+		},
+		{
+			"id": "move_session_down",
+			"label": "Move session down"
+		},
+		{
+			"id": "collapse_all_sessions",
+			"label": "Collapse all sessions"
+		},
+		{
+			"id": "expand_all_sessions",
+			"label": "Expand all sessions"
+		},
+		{
+			"id": "close_tab",
+			"label": "Close tab"
+		},
+		{
+			"id": "next_tab",
+			"label": "Next tab"
+		},
+		{
+			"id": "previous_tab",
+			"label": "Previous tab"
+		},
+		{
+			"id": "next_tab_across_sessions",
+			"label": "Next tab across sessions"
+		},
+		{
+			"id": "previous_tab_across_sessions",
+			"label": "Previous tab across sessions"
+		},
+		{
+			"id": "move_tab_right",
+			"label": "Move tab right"
+		},
+		{
+			"id": "move_tab_left",
+			"label": "Move tab left"
+		},
+		{
+			"id": "rename_tab",
+			"label": "Rename tab…"
+		},
+		{
+			"id": "show_previous_tab",
+			"label": "Show previous tab"
+		},
+		{
+			"id": "tidy_tab_title",
+			"label": "Tidy tab title"
+		},
+		{
+			"id": "focus_tabs",
+			"label": "Focus tab list"
+		},
+		{
+			"id": "peek",
+			"label": "Peek at tabs"
+		},
+		{
+			"id": "mission_control",
+			"label": "Mission Control"
+		},
+		{
+			"id": "park_pane",
+			"label": "Park pane"
+		},
+		{
+			"id": "parked_panes",
+			"label": "Parked panes"
+		},
+		{
+			"id": "inbox",
+			"label": "Show needs-attention inbox"
+		},
+		{
+			"id": "clear_inbox",
+			"label": "Clear needs-attention inbox"
+		},
+		{
+			"id": "new_shell_block",
+			"label": "New shell block"
+		},
+		{
+			"id": "new_agent_block",
+			"label": "New agent block"
+		},
+		{
+			"id": "new_browser_block",
+			"label": "New browser block…"
+		},
+		{
+			"id": "new_task_manager_block",
+			"label": "New task-manager block"
+		},
+		{
+			"id": "profile_process",
+			"label": "Profile process"
+		},
+		{
+			"id": "new_screen_block",
+			"label": "New screen block"
+		},
+		{
+			"id": "release_screen",
+			"label": "Stop controlling the screen"
+		},
+		{
+			"id": "new_git_block",
+			"label": "New git block"
+		},
+		{
+			"id": "new_board_block",
+			"label": "New board block"
+		},
+		{
+			"id": "open_board",
+			"label": "Open board…"
+		},
+		{
+			"id": "open_as_board",
+			"label": "Open as board"
+		},
+		{
+			"id": "new_canvas_block",
+			"label": "New canvas block"
+		},
+		{
+			"id": "open_canvas",
+			"label": "Open canvas file…"
+		},
+		{
+			"id": "open_url_in_split",
+			"label": "Open URL in split"
+		},
+		{
+			"id": "focus_address",
+			"label": "Focus address field"
+		},
+		{
+			"id": "inspect_page",
+			"label": "Inspect page"
+		},
+		{
+			"id": "split_right",
+			"label": "Split right"
+		},
+		{
+			"id": "split_down",
+			"label": "Split down"
+		},
+		{
+			"id": "close_pane",
+			"label": "Close block"
+		},
+		{
+			"id": "zoom",
+			"label": "Zoom block"
+		},
+		{
+			"id": "equalize",
+			"label": "Even out splits"
+		},
+		{
+			"id": "next_pane",
+			"label": "Next block"
+		},
+		{
+			"id": "previous_pane",
+			"label": "Previous block"
+		},
+		{
+			"id": "move_pane:left",
+			"label": "Move pane left"
+		},
+		{
+			"id": "move_pane:right",
+			"label": "Move pane right"
+		},
+		{
+			"id": "move_pane:up",
+			"label": "Move pane up"
+		},
+		{
+			"id": "move_pane:down",
+			"label": "Move pane down"
+		},
+		{
+			"id": "move_pane_to_tab",
+			"label": "Move pane to tab…"
+		},
+		{
+			"id": "move_pane_to_session",
+			"label": "Move pane to session…"
+		},
+		{
+			"id": "pip",
+			"label": "Picture in picture"
+		},
+		{
+			"id": "pip_dock:left",
+			"label": "Dock picture in picture left"
+		},
+		{
+			"id": "pip_dock:right",
+			"label": "Dock picture in picture right"
+		},
+		{
+			"id": "pip_dock:up",
+			"label": "Dock picture in picture up"
+		},
+		{
+			"id": "pip_dock:down",
+			"label": "Dock picture in picture down"
+		},
+		{
+			"id": "pip_corner:top_left",
+			"label": "Move picture in picture to top left"
+		},
+		{
+			"id": "pip_corner:top_right",
+			"label": "Move picture in picture to top right"
+		},
+		{
+			"id": "pip_corner:bottom_left",
+			"label": "Move picture in picture to bottom left"
+		},
+		{
+			"id": "pip_corner:bottom_right",
+			"label": "Move picture in picture to bottom right"
+		},
+		{
+			"id": "pip_stash_all",
+			"label": "Hide pictures in picture"
+		},
+		{
+			"id": "pip_over",
+			"label": "Picture in picture over…"
+		},
+		{
+			"id": "new_browser_pip",
+			"label": "New browser picture in picture"
+		},
+		{
+			"id": "open_url_in_pip",
+			"label": "Open URL in picture in picture"
+		},
+		{
+			"id": "copy",
+			"label": "Copy"
+		},
+		{
+			"id": "paste",
+			"label": "Paste"
+		},
+		{
+			"id": "paste_selection",
+			"label": "Paste selection"
+		},
+		{
+			"id": "find",
+			"label": "Find in scrollback"
+		},
+		{
+			"id": "scroll_line_up",
+			"label": "Scroll up a line"
+		},
+		{
+			"id": "scroll_line_down",
+			"label": "Scroll down a line"
+		},
+		{
+			"id": "scroll_page_up",
+			"label": "Scroll up a page"
+		},
+		{
+			"id": "scroll_page_down",
+			"label": "Scroll down a page"
+		},
+		{
+			"id": "scroll_top",
+			"label": "Scroll to top"
+		},
+		{
+			"id": "scroll_bottom",
+			"label": "Scroll to bottom"
+		},
+		{
+			"id": "previous_prompt",
+			"label": "Jump to previous prompt"
+		},
+		{
+			"id": "next_prompt",
+			"label": "Jump to next prompt"
+		},
+		{
+			"id": "reply_start",
+			"label": "Jump to start of reply"
+		},
+		{
+			"id": "open_scrollback",
+			"label": "Open scrollback in editor"
+		},
+		{
+			"id": "toggle_output_fold",
+			"label": "Fold or unfold long output"
+		},
+		{
+			"id": "clear",
+			"label": "Clear screen and scrollback"
+		},
+		{
+			"id": "restart",
+			"label": "Restart shell"
+		},
+		{
+			"id": "goto_directory",
+			"label": "Go to directory…"
+		},
+		{
+			"id": "insert_path",
+			"label": "Insert path…"
+		},
+		{
+			"id": "carly",
+			"label": "Ask Carly…"
+		},
+		{
+			"id": "carly_new_conversation",
+			"label": "Carly: New conversation"
+		},
+		{
+			"id": "carly_tasks",
+			"label": "Carly: Scheduled tasks"
+		},
+		{
+			"id": "new_carly_block",
+			"label": "New Carly block"
+		},
+		{
+			"id": "new_database",
+			"label": "New database…"
+		},
+		{
+			"id": "new_memory_database",
+			"label": "New in-memory database"
+		},
+		{
+			"id": "open_database",
+			"label": "Open database…"
+		},
+		{
+			"id": "open_database_read_only",
+			"label": "Open database read-only…"
+		},
+		{
+			"id": "open_recent_database",
+			"label": "Open recent database"
+		},
+		{
+			"id": "new_notebook",
+			"label": "New notebook"
+		},
+		{
+			"id": "open_notebook",
+			"label": "Open notebook…"
+		},
+		{
+			"id": "open_file",
+			"label": "Open file…"
+		},
+		{
+			"id": "new_note",
+			"label": "New note"
+		},
+		{
+			"id": "session_note",
+			"label": "Session note"
+		},
+		{
+			"id": "pane_note",
+			"label": "Block note"
+		},
+		{
+			"id": "reopen_note",
+			"label": "Reopen closed note"
+		},
+		{
+			"id": "save",
+			"label": "Save"
+		},
+		{
+			"id": "save_as",
+			"label": "Save as…"
+		},
+		{
+			"id": "revert",
+			"label": "Revert to saved"
+		},
+		{
+			"id": "toggle_source",
+			"label": "Toggle Markdown source"
+		},
+		{
+			"id": "go_to_line",
+			"label": "Go to line…"
+		},
+		{
+			"id": "toggle_wrap",
+			"label": "Wrap lines"
+		},
+		{
+			"id": "next_change",
+			"label": "Next change"
+		},
+		{
+			"id": "previous_change",
+			"label": "Previous change"
+		},
+		{
+			"id": "fold_all",
+			"label": "Fold all"
+		},
+		{
+			"id": "unfold_all",
+			"label": "Unfold all"
+		},
+		{
+			"id": "reopen_with_encoding",
+			"label": "Reopen with encoding…"
+		},
+		{
+			"id": "line_endings",
+			"label": "Convert line endings…"
+		},
+		{
+			"id": "browse_folder",
+			"label": "Browse folder…"
+		},
+		{
+			"id": "reveal_file",
+			"label": "Reveal file in Finder"
+		},
+		{
+			"id": "open_file_outside",
+			"label": "Open file in default app"
+		},
+		{
+			"id": "copy_file_path",
+			"label": "Copy file path"
+		},
+		{
+			"id": "files",
+			"label": "Show/hide files"
+		},
+		{
+			"id": "focus_files",
+			"label": "Focus Files"
+		},
+		{
+			"id": "reveal_active_file",
+			"label": "Files: Reveal active file"
+		},
+		{
+			"id": "reveal_cwd",
+			"label": "Files: Reveal directory"
+		},
+		{
+			"id": "files_pin",
+			"label": "Files: Pin folder / Follow block"
+		},
+		{
+			"id": "open_folder",
+			"label": "Files: Open folder…"
+		},
+		{
+			"id": "files_filter",
+			"label": "Files: Filter…"
+		},
+		{
+			"id": "files_collapse_all",
+			"label": "Files: Collapse all"
+		},
+		{
+			"id": "files_toggle_hidden",
+			"label": "Files: Show/hide hidden files"
+		},
+		{
+			"id": "increase_font_size",
+			"label": "Increase font size"
+		},
+		{
+			"id": "decrease_font_size",
+			"label": "Decrease font size"
+		},
+		{
+			"id": "reset_font_size",
+			"label": "Reset font size"
+		},
+		{
+			"id": "theme",
+			"label": "Change theme…"
+		},
+		{
+			"id": "opacity",
+			"label": "Change opacity…"
+		},
+		{
+			"id": "blur",
+			"label": "Change blur…"
+		},
+		{
+			"id": "appearance:system",
+			"label": "System appearance"
+		},
+		{
+			"id": "appearance:light",
+			"label": "Light appearance"
+		},
+		{
+			"id": "appearance:dark",
+			"label": "Dark appearance"
+		},
+		{
+			"id": "copy_on_select",
+			"label": "Copy on select"
+		},
+		{
+			"id": "contrast",
+			"label": "Automatic contrast correction"
+		},
+		{
+			"id": "native_surfaces",
+			"label": "Native program surfaces"
+		},
+		{
+			"id": "surface_headings:auto",
+			"label": "Markdown headings: Automatic"
+		},
+		{
+			"id": "surface_headings:annotated",
+			"label": "Markdown headings: Annotated"
+		},
+		{
+			"id": "surface_headings:sized",
+			"label": "Markdown headings: Sized"
+		},
+		{
+			"id": "surface_diffs",
+			"label": "Edits: inline or split"
+		},
+		{
+			"id": "surface_fold",
+			"label": "Fold tool calls"
+		},
+		{
+			"id": "expand_thoughts",
+			"label": "Expand thoughts"
+		},
+		{
+			"id": "composer_text",
+			"label": "Composer: plain text or Markdown"
+		},
+		{
+			"id": "chat:reader",
+			"label": "Chat style: Reader"
+		},
+		{
+			"id": "chat:spine",
+			"label": "Chat style: Spine"
+		},
+		{
+			"id": "chat:console",
+			"label": "Chat style: Console"
+		},
+		{
+			"id": "native_prompt",
+			"label": "Native prompt"
+		},
+		{
+			"id": "prompt_style",
+			"label": "Prompt style…"
+		},
+		{
+			"id": "prompt_part:palette",
+			"label": "Prompt: next colors"
+		},
+		{
+			"id": "prompt_part:fill",
+			"label": "Prompt: next fill"
+		},
+		{
+			"id": "prompt_part:shape",
+			"label": "Prompt: next shape"
+		},
+		{
+			"id": "prompt_part:frame",
+			"label": "Prompt: next frame"
+		},
+		{
+			"id": "prompt_part:line_end",
+			"label": "Prompt: frame line end on or off"
+		},
+		{
+			"id": "prompt_part:gap",
+			"label": "Prompt: next gap"
+		},
+		{
+			"id": "prompt_part:char",
+			"label": "Prompt: next prompt character"
+		},
+		{
+			"id": "prompt_part:separator",
+			"label": "Prompt: next separators"
+		},
+		{
+			"id": "prompt_part:git",
+			"label": "Prompt: next git format"
+		},
+		{
+			"id": "prompt_part:dir",
+			"label": "Prompt: next directory format"
+		},
+		{
+			"id": "prompt_part:icons",
+			"label": "Prompt: icons on or off"
+		},
+		{
+			"id": "prompt_part:clock",
+			"label": "Prompt: next clock"
+		},
+		{
+			"id": "prompt_segments",
+			"label": "Prompt segments…"
+		},
+		{
+			"id": "prompt_collapse",
+			"label": "Collapse past prompts"
+		},
+		{
+			"id": "next_layout",
+			"label": "Next layout"
+		},
+		{
+			"id": "layout:rail",
+			"label": "Layout: Rail"
+		},
+		{
+			"id": "layout:float",
+			"label": "Layout: Float"
+		},
+		{
+			"id": "layout:tiles",
+			"label": "Layout: Tiles"
+		},
+		{
+			"id": "layout:studio",
+			"label": "Layout: Studio"
+		},
+		{
+			"id": "toggle_tab_orientation",
+			"label": "Toggle tab orientation"
+		},
+		{
+			"id": "tabs:horizontal",
+			"label": "Horizontal tabs"
+		},
+		{
+			"id": "tabs:vertical",
+			"label": "Vertical tabs"
+		},
+		{
+			"id": "toggle_sidebar",
+			"label": "Show/hide sidebar"
+		},
+		{
+			"id": "pane_headers:never",
+			"label": "Pane headers: Never"
+		},
+		{
+			"id": "pane_headers:split",
+			"label": "Pane headers: When split"
+		},
+		{
+			"id": "pane_headers:always",
+			"label": "Pane headers: Always"
+		},
+		{
+			"id": "status_bar",
+			"label": "Show status line"
+		},
+		{
+			"id": "interface_style",
+			"label": "Change interface style…"
+		},
+		{
+			"id": "switch_host",
+			"label": "Switch host…"
+		},
+		{
+			"id": "add_remote_host",
+			"label": "Add remote host…"
+		},
+		{
+			"id": "new_session_on_host",
+			"label": "New session on host…"
+		},
+		{
+			"id": "disconnect_host",
+			"label": "Disconnect from host…"
+		},
+		{
+			"id": "update_remote_host",
+			"label": "Update remote host…"
+		},
+		{
+			"id": "preferences",
+			"label": "Settings…"
+		},
+		{
+			"id": "secure_keyboard_entry",
+			"label": "Toggle Secure Keyboard Entry"
+		},
+		{
+			"id": "open_config",
+			"label": "Open settings.json"
+		},
+		{
+			"id": "reload_config",
+			"label": "Reload settings"
+		},
+		{
+			"id": "reload_plugins",
+			"label": "Reload plugins"
+		},
+		{
+			"id": "open_logs",
+			"label": "Open logs and app state"
+		},
+		{
+			"id": "open_app_data",
+			"label": "Open app data folder"
+		},
+		{
+			"id": "quit",
+			"label": "Quit Tern"
+		},
+		{
+			"id": "restart_tern",
+			"label": "Restart Tern"
+		},
+		{
+			"id": "fps",
+			"label": "Debug: Show FPS"
+		},
+		{
+			"id": "devtools",
+			"label": "Toggle developer tools"
+		},
+		{
+			"id": "screenshot",
+			"label": "Screenshot"
+		},
+		{
+			"id": "show_commands",
+			"label": "Show all commands"
+		},
+		{
+			"id": "sign_out",
+			"label": "Sign out of Stencil"
+		},
+		{
+			"id": "check_for_updates",
+			"label": "Check for updates"
+		},
+		{
+			"id": "release_notes",
+			"label": "What's new: release notes"
+		},
+		{
+			"id": "help",
+			"label": "Help & documentation"
+		},
+		{
+			"id": "restart_to_update",
+			"label": "Restart to update"
+		},
+		{
+			"id": "restart_session_daemon",
+			"label": "Restart session daemon"
+		},
+		{
+			"id": "install_omp",
+			"label": "Install omp"
+		},
+		{
+			"id": "check_omp_updates",
+			"label": "Check for omp updates"
+		},
+		{
+			"id": "stop_managing_omp",
+			"label": "Stop managing omp"
+		}
+	]
+}

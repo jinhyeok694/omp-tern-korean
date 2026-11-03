@@ -1,0 +1,32 @@
+{
+	"name": "omp-tern-korean",
+	"version": "0.1.0",
+	"description": "omp와 Tern의 화면 문구를 자연스러운 한국어로 바꿉니다",
+	"type": "module",
+	"omp": {
+		"extensions": ["./omp/index.ts"]
+	},
+	"scripts": {
+		"test": "bun test",
+		"check": "bun tools/catalog.ts check",
+		"coverage": "bun tools/catalog.ts coverage",
+		"extract": "bun tools/extract-omp.ts && bun tools/extract-tern.ts"
+	},
+	"keywords": ["omp", "oh-my-pi", "tern", "korean", "ko-KR", "i18n", "l10n", "한국어"],
+	"author": "jinhyeok694",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jinhyeok694/omp-tern-korean.git"
+	},
+	"homepage": "https://github.com/jinhyeok694/omp-tern-korean#readme",
+	"bugs": {
+		"url": "https://github.com/jinhyeok694/omp-tern-korean/issues"
+	},
+	"engines": {
+		"omp": ">=18.11.0"
+	},
+	"devDependencies": {
+		"typescript": "5"
+	}
+}

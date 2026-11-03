@@ -1,0 +1,42 @@
+/*
+ * Tern에는 내장 문구를 바꾸는 API가 없어서, 글자를 숨기고 ::before로 한국어를 그립니다.
+ * 내부 클래스(tn-*, tb-*)와 DOM 순서에 기대므로 Tern 업데이트로 깨질 수 있습니다.
+ * 확인한 버전: Tern 0.9.9 (Windows). 범위 탭 DOM 순서: 1 All, 2 Commands, 3 Files, 4·5 숨김, 6 Sessions, 7 Hosts.
+ */
+
+.tn-pl-scopes .tn-pl-scope:nth-of-type(1),
+.tn-pl-scopes .tn-pl-scope:nth-of-type(2),
+.tn-pl-scopes .tn-pl-scope:nth-of-type(3),
+.tn-pl-scopes .tn-pl-scope:nth-of-type(6),
+.tn-pl-scopes .tn-pl-scope:nth-of-type(7) {
+	font-size: 0;
+}
+
+.tn-pl-scopes .tn-pl-scope:nth-of-type(1)::before,
+.tn-pl-scopes .tn-pl-scope:nth-of-type(2)::before,
+.tn-pl-scopes .tn-pl-scope:nth-of-type(3)::before,
+.tn-pl-scopes .tn-pl-scope:nth-of-type(6)::before,
+.tn-pl-scopes .tn-pl-scope:nth-of-type(7)::before {
+	font-size: 13px;
+	white-space: nowrap;
+}
+
+.tn-pl-scopes .tn-pl-scope:nth-of-type(1)::before { content: "전체"; }
+.tn-pl-scopes .tn-pl-scope:nth-of-type(2)::before { content: "명령"; }
+.tn-pl-scopes .tn-pl-scope:nth-of-type(3)::before { content: "파일"; }
+.tn-pl-scopes .tn-pl-scope:nth-of-type(6)::before { content: "세션"; }
+.tn-pl-scopes .tn-pl-scope:nth-of-type(7)::before { content: "호스트"; }
+
+.tb-add > span.lbl,
+.tb-files > span.lbl {
+	font-size: 0;
+}
+
+.tb-add > span.lbl::before,
+.tb-files > span.lbl::before {
+	font-size: 13.5px;
+	white-space: nowrap;
+}
+
+.tb-add > span.lbl::before { content: "새 탭"; }
+.tb-files > span.lbl::before { content: "파일"; }

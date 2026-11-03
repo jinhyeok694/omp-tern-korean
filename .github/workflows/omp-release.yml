@@ -1,0 +1,75 @@
+name: omp release watch
+
+# For every new omp release: extract its UI strings, list the ones without a Korean translation,
+# and open (or update) a pull request with the new source list and that report. Tern's palette
+# commands are refreshed from the published reference at the same time.
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: omp version (default: latest on npm)
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: omp-release-watch
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+
+      - name: Resolve version
+        id: version
+        run: |
+          version="${{ inputs.version }}"
+          if [ -z "$version" ]; then version="$(npm view @oh-my-pi/pi-coding-agent version)"; fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          current="$(jq -r .omp catalog/source.json)"
+          echo "omp on npm: $version, catalog/source.json: $current"
+
+      - name: Extract strings
+        run: |
+          bun tools/extract-omp.ts --version "${{ steps.version.outputs.version }}"
+          bun tools/extract-tern.ts
+          bun tools/catalog.ts coverage --report coverage.md
+
+      - name: Open or update the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if git diff --quiet -- catalog/source.json tern-plugin/source.json; then
+            echo "No new strings."
+            exit 0
+          fi
+          branch="omp-strings/$VERSION"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$branch"
+          git add catalog/source.json tern-plugin/source.json
+          git commit -m "chore: omp $VERSION 문구 추출"
+          git push --force origin "$branch"
+          title="omp $VERSION: 새 문구 번역"
+          {
+            echo "omp $VERSION에서 화면 문구를 다시 뽑았습니다. 아래 목록을 번역해 \`catalog/ko.json\`에 넣고(\`bun tools/catalog.ts merge\`), 화면에 나오지 않는 문구는 \`catalog/skip.json\`에 넣으십시오."
+            echo
+            cat coverage.md
+          } > body.md
+          # GitHub caps PR bodies at 65,536 characters.
+          head -c 60000 body.md > body.trimmed.md
+          if gh pr view "$branch" --json number >/dev/null 2>&1; then
+            gh pr edit "$branch" --title "$title" --body-file body.trimmed.md
+          else
+            gh pr create --head "$branch" --base main --title "$title" --body-file body.trimmed.md
+          fi
