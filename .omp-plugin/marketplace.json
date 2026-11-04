@@ -5,14 +5,14 @@
 	},
 	"metadata": {
 		"description": "omp와 Tern의 화면 문구를 한국어로 바꾸는 플러그인",
-		"version": "0.2.0"
+		"version": "0.2.1"
 	},
 	"plugins": [
 		{
 			"name": "omp-tern-korean",
 			"source": "./",
 			"description": "omp와 Tern의 화면 문구를 자연스러운 한국어로 바꿉니다. 번역은 매일 자동으로 새로 받습니다.",
-			"version": "0.2.0",
+			"version": "0.2.1",
 			"category": "localization",
 			"homepage": "https://github.com/jinhyeok694/omp-tern-korean",
 			"tags": ["korean", "ko-KR", "i18n", "l10n", "tern"]

@@ -106,6 +106,16 @@ const DENY_PROPS: Record<string, true> = {
 	focus: true,
 };
 
+/** A value shaped like a machine setting: one word starting lowercase (`none`, `top-band`, `select`). */
+const ENUM_VALUE = /^[a-z][a-zA-Z0-9_-]*$/;
+
+/**
+ * Fields whose value is copy even when it is one lowercase word (a `current` badge, a kv row's
+ * `pending`): a nested object's `text`, `label` or `title`, a kv row's value `v`, a `facts` value,
+ * an item of a text array (key `""`).
+ */
+const COPY_FIELDS: Record<string, true> = { "": true, text: true, label: true, title: true, v: true, fact: true };
+
 type Json = null | boolean | number | string | Json[] | { [key: string]: Json };
 
 /** Called for every UI text unit with omp's text and what is shown; placeholders appear as `{n}`. */
@@ -252,8 +262,11 @@ export class FrameTranslator {
 
 	/** Translates any prop value; `key` names the prop or field that holds it. */
 	#value(value: Json, key: string): Json {
-		// `k` is a kv row's label (`{ k: "Model", v }`) but also a control's kind (`{ k: "select" }`).
-		const denied = DENY_PROPS[key] === true || (key === "k" && typeof value === "string" && /^[a-z][\w-]*$/.test(value));
+		// A lone lowercase word outside the copy fields is a setting, not copy: `wrap: "none"`,
+		// `preview: "none"`, `kind: "pending"`. Translated, Tern would not know it and fall back to
+		// its default (text that should stay on one line wraps, a hidden preview pane opens). This
+		// also covers `k`: a kv row's label (`{ k: "Model", v }`) but also a control's kind (`{ k: "select" }`).
+		const denied = DENY_PROPS[key] === true || (COPY_FIELDS[key] !== true && typeof value === "string" && ENUM_VALUE.test(value));
 		if (typeof value === "string") return denied ? value : this.#text(value);
 		if (Array.isArray(value)) {
 			// Spans are copy wherever they sit (a table cell keyed by a column id such as `keys` or

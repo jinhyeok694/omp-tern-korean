@@ -19,6 +19,7 @@ import { koreanizeRequest } from "./korean-prompts.ts";
 import { ensureTernPlugin, runTernWith, type TernLinkResult } from "./tern-link.ts";
 import { DEFAULT_APC_LIMIT, FrameTranslator, TSP_PREFIX, translateWrite } from "./tsp.ts";
 import { checkForUpdate, DEFAULT_CATALOG_URL, readCachedCatalog, type UpdateResult } from "./update.ts";
+import { keepWords } from "./words.ts";
 
 type Write = (this: unknown, data: string) => void;
 
@@ -75,8 +76,13 @@ try {
 }
 
 const translate = (text: string): string | undefined => (shared.enabled ? catalog?.translate(text) : undefined);
-shared.translator ??= new FrameTranslator(translate);
-shared.translator.setTranslate(translate);
+/** Tern breaks Korean between any two syllables; joined words break only at spaces (see words.ts). */
+const translateForTern = (text: string): string | undefined => {
+	const korean = translate(text);
+	return korean === undefined ? undefined : keepWords(korean);
+};
+shared.translator ??= new FrameTranslator(translateForTern);
+shared.translator.setTranslate(translateForTern);
 
 // ─── Tern: the TSP write boundary ──────────────────────────────────────────
 

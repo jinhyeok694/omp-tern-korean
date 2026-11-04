@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { createCatalog } from "../omp/catalog.ts";
 import { DEFAULT_APC_LIMIT, encodeMessage, FrameTranslator, TSP_PREFIX, translateWrite } from "../omp/tsp.ts";
+import { keepWords } from "../omp/words.ts";
 
 const catalog = createCatalog(
 	{
@@ -76,6 +77,17 @@ describe("span lines", () => {
 		expect((op![4] as Node).p!.text).toEqual([{ t: "--until", s: "code" }, { t: "로 반복을 제한합니다." }]);
 	});
 
+	test("words joined for Tern's line breaking keep their pieces and styles, the joiner touching the code", () => {
+		const joined = (text: string) => {
+			const korean = catalog.translate(text);
+			return korean === undefined ? undefined : keepWords(korean);
+		};
+		const translator = new FrameTranslator(joined);
+		const spans = [{ t: "Gate it with " }, { t: "--until", s: "code" }, { t: "." }];
+		const [op] = run(translator, [["add", "a", "main", null, textNode("a", spans)]]);
+		expect((op![4] as Node).p!.text).toEqual([{ t: "--until", s: "code" }, { t: "\u2060로 반\u2060복\u2060을 제\u2060한\u2060합\u2060니\u2060다\u2060." }]);
+	});
+
 	test("without a whole-line entry, pieces are translated one by one", () => {
 		const translator = new FrameTranslator(text => catalog.translate(text));
 		const spans = [{ t: "Close", s: "strong" }, { t: "x", s: "key" }];
@@ -94,6 +106,23 @@ describe("span lines", () => {
 		);
 		run(translator, [["add", "a", "main", null, textNode("a", [{ t: "Press " }, { t: "esc", s: "key" }, { t: " to clear the search" }])]]);
 		expect(seen).toEqual([["Press {0} to clear the search", "검색을 지우려면 {0} 키를 누르십시오"]]);
+	});
+});
+
+describe("props", () => {
+	test("a one-word setting keeps its value while copy fields still translate", () => {
+		const words = createCatalog({ version: 1, revision: 1, strings: { "Status: none": "상태: 없음", Current: "현재" }, templates: {} }, false);
+		const translator = new FrameTranslator(text => words.translate(text));
+		const [op] = run(translator, [
+			[
+				"add",
+				"a",
+				"main",
+				null,
+				{ id: "a", k: "text", p: { text: "Close", wrap: "none", preview: "none", kind: "none", chips: [{ text: "none" }], rows: [{ k: "Status", v: "none" }] } },
+			],
+		]);
+		expect((op![4] as Node).p).toEqual({ text: "Close", wrap: "none", preview: "none", kind: "none", chips: [{ text: "없음" }], rows: [{ k: "Status", v: "없음" }] });
 	});
 });
 

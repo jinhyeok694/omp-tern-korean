@@ -1,6 +1,6 @@
 {
 	"name": "omp-tern-korean",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "omp와 Tern의 화면 문구를 자연스러운 한국어로 바꿉니다",
 	"type": "module",
 	"omp": {

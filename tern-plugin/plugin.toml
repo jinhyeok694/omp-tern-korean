@@ -1,7 +1,7 @@
 schema = 1
 id = "ko-kr"
 name = "한국어 번역"
-version = "0.2.0"
+version = "0.2.1"
 description = "Tern 팔레트 명령을 한국어로 찾게 하고, 팔레트 범위 탭과 탭 막대 글자를 한국어로 바꿉니다"
 window = "window.luau"
 styles = ["ko-kr.css"]
