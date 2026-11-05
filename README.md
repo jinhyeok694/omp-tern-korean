@@ -17,7 +17,7 @@ omp를 다시 시작하면 바로 적용됩니다. Tern 안에서 omp를 실행�
 tern plugin install github.com/jinhyeok694/omp-tern-korean/tern-plugin
 ```
 
-omp 18.11.0 이상이 필요합니다. omp 18.15–18.16, Tern 0.9.9(Windows)에서 확인했습니다.
+omp 18.11.0 이상이 필요합니다. omp 18.15–18.16, Tern 0.9.9–0.9.10(Windows)에서 확인했습니다.
 
 ## 무엇이 바뀌나
 
