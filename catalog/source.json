@@ -1,6 +1,6 @@
 {
 	"version": 1,
-	"omp": "18.16.0",
+	"omp": "18.18.8",
 	"strings": [
 		{
 			"en": "!op read op://dev/github/token",
@@ -406,6 +406,16 @@
 			]
 		},
 		{
+			"en": "(in under a minute)",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "(in-flight turn cancelled)",
 			"kind": "exact",
 			"files": [
@@ -413,6 +423,16 @@
 			],
 			"contexts": [
 				"var:killedNote"
+			]
+		},
+		{
+			"en": "(just now)",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -454,6 +474,17 @@
 			],
 			"contexts": [
 				"label"
+			]
+		},
+		{
+			"en": "(no answer)",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/ask.ts"
+			],
+			"contexts": [
+				"return",
+				"var:NO_ANSWER"
 			]
 		},
 		{
@@ -599,9 +630,11 @@
 			"en": "({0} ago)",
 			"kind": "template",
 			"files": [
-				"pi-coding-agent/src/modes/controllers/command-controller.ts"
+				"pi-coding-agent/src/modes/controllers/command-controller.ts",
+				"pi-tui/src/status-line/prompt-cache.ts"
 			],
 			"contexts": [
+				"return",
 				"var:headerSuffix"
 			]
 		},
@@ -893,6 +926,26 @@
 				"fg()",
 				"span()",
 				"var:more"
+			]
+		},
+		{
+			"en": "+{0} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:saved"
+			]
+		},
+		{
+			"en": ", no expiry",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"var:until"
 			]
 		},
 		{
@@ -2093,7 +2146,7 @@
 			],
 			"contexts": [
 				"compact()",
-				"var:meta"
+				"fg()"
 			]
 		},
 		{
@@ -2122,6 +2175,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/advisor/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "1  Update automatically",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/setup/scenes/updates.ts"
 			],
 			"contexts": [
 				"label"
@@ -2167,6 +2230,26 @@
 			],
 			"contexts": [
 				"text"
+			]
+		},
+		{
+			"en": "1 fps",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "1 frame/s",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -2487,11 +2570,31 @@
 			]
 		},
 		{
+			"en": "12.5 frames/s",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "120 seconds",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/modes/settings.ts",
 				"pi-coding-agent/src/tools/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "15 fps",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
 			],
 			"contexts": [
 				"label"
@@ -2585,6 +2688,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/tts/models.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "2  Notify me",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/setup/scenes/updates.ts"
 			],
 			"contexts": [
 				"label"
@@ -2818,6 +2931,16 @@
 			]
 		},
 		{
+			"en": "250 ms",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "25K tokens",
 			"kind": "exact",
 			"files": [
@@ -2930,6 +3053,16 @@
 			]
 		},
 		{
+			"en": "30 fps",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "30 messages",
 			"kind": "exact",
 			"files": [
@@ -2995,6 +3128,26 @@
 			],
 			"contexts": [
 				"label"
+			]
+		},
+		{
+			"en": "4 fps",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "4 frames/s",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -3354,6 +3507,16 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "80 ms",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
 			]
 		},
 		{
@@ -4240,10 +4403,30 @@
 			]
 		},
 		{
-			"en": "Add a note to the highlighted answer, or to the one just picked  n",
+			"en": "Add a note to the highlighted answer",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"title"
+			]
+		},
+		{
+			"en": "Add a note to the highlighted answer  n",
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/overlays/ask-dialog.ts"
+			],
+			"contexts": [
+				"title"
+			]
+		},
+		{
+			"en": "Add a note to the highlighted answer  {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
 			],
 			"contexts": [
 				"title"
@@ -4339,6 +4522,26 @@
 			],
 			"contexts": [
 				"roleAction()"
+			]
+		},
+		{
+			"en": "Add or edit a note on an ask option",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/hotkeys-markdown.ts"
+			],
+			"contexts": [
+				"action"
+			]
+		},
+		{
+			"en": "Add or edit a note on the highlighted ask option",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/app-keybindings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -4985,6 +5188,16 @@
 			]
 		},
 		{
+			"en": "Agent overthinking? Say `chillax` — on models with per-message effort, thinking drops to the lowest level, even mid-turn — watch it glow as you type",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/prompt/tips.txt"
+			],
+			"contexts": [
+				"tip"
+			]
+		},
+		{
 			"en": "Agent {0} could not be fully cancelled: {1}.",
 			"kind": "template",
 			"files": [
@@ -4992,6 +5205,16 @@
 			],
 			"contexts": [
 				"message"
+			]
+		},
+		{
+			"en": "Agent {0} is homed on another thread and can only be viewed from the main thread.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/session-focus-controller.ts"
+			],
+			"contexts": [
+				"Error()"
 			]
 		},
 		{
@@ -5275,6 +5498,16 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "All set · Submit sends these answers",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"span()"
 			]
 		},
 		{
@@ -5700,7 +5933,7 @@
 			]
 		},
 		{
-			"en": "Animation style for working/loading messages",
+			"en": "Animation style for working/loading messages; off under reduced or no Motion",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/modes/settings.ts"
@@ -6684,6 +6917,16 @@
 			]
 		},
 		{
+			"en": "Ask before spending; never spend without a prompt.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Ask for up to four distinct predictions instead of one, most likely first. The ghost text shows the first one your draft matches; after inserting one, press {0} again to pick another. The same single request returns a few more output tokens",
 			"kind": "template",
 			"files": [
@@ -6904,6 +7147,16 @@
 			],
 			"contexts": [
 				"span()"
+			]
+		},
+		{
+			"en": "At most {0} characters",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -7189,6 +7442,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Auto Update",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
 			],
 			"contexts": [
 				"label"
@@ -8010,10 +8273,12 @@
 			"en": "Background job completed",
 			"kind": "exact",
 			"files": [
+				"pi-tui/src/chat/transcript-presentation.ts",
 				"pi-tui/src/chat/transcript-render-helpers.ts"
 			],
 			"contexts": [
-				"span()"
+				"span()",
+				"var:title"
 			]
 		},
 		{
@@ -8129,7 +8394,7 @@
 			]
 		},
 		{
-			"en": "Balance brevity and detail (default)",
+			"en": "Balance brevity and detail",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
@@ -8245,7 +8510,8 @@
 			"files": [
 				"pi-coding-agent/src/exec/settings.ts",
 				"pi-coding-agent/src/extensibility/legacy-pi-coding-agent-shim.ts",
-				"pi-tui/src/chat/bash-execution.ts"
+				"pi-tui/src/chat/bash-execution.ts",
+				"pi-tui/src/chat/transcript-presentation.ts"
 			],
 			"contexts": [
 				"group",
@@ -8311,6 +8577,16 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "Bash visualizer  ·  Escape closes",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"bold()"
 			]
 		},
 		{
@@ -9169,6 +9445,7 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/apps/ps-top.ts",
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/advisor-config.ts",
 				"pi-tui/src/overlays/agents-hub.ts",
 				"pi-tui/src/overlays/annotation-overlay.ts",
@@ -9282,11 +9559,9 @@
 			"en": "Cancelled",
 			"kind": "exact",
 			"files": [
-				"pi-tui/src/overlays/btw-history-panel.ts",
-				"pi-tui/src/tools/ask.ts"
+				"pi-tui/src/overlays/btw-history-panel.ts"
 			],
 			"contexts": [
-				"fg()",
 				"label",
 				"span()"
 			]
@@ -9628,7 +9903,7 @@
 			]
 		},
 		{
-			"en": "Capture mouse clicks in the main session so live subagent cards and HUD rows focus on click, with a hover highlight on the target, and clicks on extension-owned links reach their extension (the link-hint key picks them without the mouse). Native text selection becomes {0}+drag and wheel scroll becomes {1}+wheel while on",
+			"en": "Capture mouse clicks in the main session so live subagent cards and HUD rows focus on click, with a hover highlight on the target, and clicks on extension-owned links reach their extension (the link-hint key picks them without the mouse). Native text selection becomes {0}+drag while on, and mouse capture stops wheel scrolling — the terminal reports wheel ticks to omp instead — so scroll with the terminal's keyboard scrollback keys, or turn this off",
 			"kind": "template",
 			"files": [
 				"pi-coding-agent/src/modes/settings.ts"
@@ -9684,6 +9959,16 @@
 				"pi-tui/src/overlays/context-viewer.ts"
 			],
 			"contexts": []
+		},
+		{
+			"en": "Ceiling on how often the TUI repaints, streaming text included. Keystroke echo keeps 30 fps, so the pane you type in stays responsive",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
 		},
 		{
 			"en": "Celebrate unscheduled Codex weekly usage resets and newly banked saved resets with a top-third fireworks overlay that remains until {0}",
@@ -9748,16 +10033,6 @@
 			]
 		},
 		{
-			"en": "Chat about this isn't available when re-answering from the tree — pick an option or type a custom answer instead.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
-			],
-			"contexts": [
-				"showError()"
-			]
-		},
-		{
 			"en": "Chat calls completed inside agent runs.",
 			"kind": "exact",
 			"files": [
@@ -9779,16 +10054,6 @@
 		},
 		{
 			"en": "Cheapest cache writes; pair with cache warming to keep short entries alive while idle",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Check eligibility, then ask before spending the first saved reset. With no prompt UI, spend only a reset expiring within 5 minutes.",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
@@ -9822,16 +10087,6 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/modes/settings.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Check live eligibility, then ask before spending the first Claude reset. With no prompt UI, spend only a reset expiring within 5 minutes.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
 			],
 			"contexts": [
 				"description"
@@ -9928,6 +10183,16 @@
 			]
 		},
 		{
+			"en": "Chillax Keyword",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/magic-keywords.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Choose a message, code block, quote, or command from this session",
 			"kind": "exact",
 			"files": [
@@ -9987,6 +10252,14 @@
 			"contexts": [
 				"title"
 			]
+		},
+		{
+			"en": "Choose how new releases reach you.",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/setup/scenes/updates.ts"
+			],
+			"contexts": []
 		},
 		{
 			"en": "Choose next action:",
@@ -10139,6 +10412,16 @@
 			]
 		},
 		{
+			"en": "Claude Auto-Redeem Fable Resets",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"resetWindowSetting()"
+			]
+		},
+		{
 			"en": "Claude Auto-Redeem Min Block",
 			"kind": "exact",
 			"files": [
@@ -10159,13 +10442,23 @@
 			]
 		},
 		{
-			"en": "Claude Auto-Redeem Resets",
+			"en": "Claude Auto-Redeem Saved Resets (5h)",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
 			],
 			"contexts": [
-				"label"
+				"resetWindowSetting()"
+			]
+		},
+		{
+			"en": "Claude Auto-Redeem Saved Resets (Weekly)",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"resetWindowSetting()"
 			]
 		},
 		{
@@ -10176,6 +10469,16 @@
 			],
 			"contexts": [
 				"label"
+			]
+		},
+		{
+			"en": "Claude Fable weekly",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/usage-display.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -10637,6 +10940,7 @@
 				"pi-tui/src/overlays/report-panel.ts",
 				"pi-tui/src/overlays/session-info-overlay.ts",
 				"pi-tui/src/overlays/session-selector.ts",
+				"pi-tui/src/overlays/spotlight-sheet.ts",
 				"pi-tui/src/overlays/usage-dashboard.ts"
 			],
 			"contexts": [
@@ -10799,13 +11103,23 @@
 			]
 		},
 		{
-			"en": "Codex Auto-Redeem Saved Resets",
+			"en": "Codex Auto-Redeem Saved Resets (5h)",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
 			],
 			"contexts": [
-				"label"
+				"resetWindowSetting()"
+			]
+		},
+		{
+			"en": "Codex Auto-Redeem Saved Resets (Weekly)",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"resetWindowSetting()"
 			]
 		},
 		{
@@ -10927,6 +11241,16 @@
 			],
 			"contexts": [
 				"showError()"
+			]
+		},
+		{
+			"en": "Collab host: {0}; rejoining…",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/collab/guest.ts"
+			],
+			"contexts": [
+				"showStatus()"
 			]
 		},
 		{
@@ -11091,6 +11415,16 @@
 			]
 		},
 		{
+			"en": "Color headings by level, bold and italic text, inline code, and table headers from the theme's ANSI palette. Off uses one heading color and plain bold/italic.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Color-Blind Mode",
 			"kind": "exact",
 			"files": [
@@ -11105,6 +11439,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/setup/scenes/theme.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Colorful Markdown",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
 			],
 			"contexts": [
 				"label"
@@ -12927,6 +13271,7 @@
 			],
 			"contexts": [
 				"aria",
+				"label",
 				"title"
 			]
 		},
@@ -12978,6 +13323,16 @@
 			],
 			"contexts": [
 				"actionButton()"
+			]
+		},
+		{
+			"en": "Copy reply",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/assistant-message.ts"
+			],
+			"contexts": [
+				"label"
 			]
 		},
 		{
@@ -14784,6 +15139,7 @@
 			"en": "Developer",
 			"kind": "exact",
 			"files": [
+				"pi-coding-agent/src/spotlight/settings.ts",
 				"pi-coding-agent/src/tools/settings.ts"
 			],
 			"contexts": [
@@ -14805,12 +15161,10 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/render/render-utils.ts",
-				"pi-tui/src/tools/lsp.ts",
 				"pi-tui/src/tools/native-view.ts"
 			],
 			"contexts": [
 				"fg()",
-				"label",
 				"span()"
 			]
 		},
@@ -15035,6 +15389,16 @@
 			]
 		},
 		{
+			"en": "Disable WebSockets for OpenAI Codex models",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Disable an MCP server",
 			"kind": "exact",
 			"files": [
@@ -15139,16 +15503,6 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/tools/settings.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Disable websockets for OpenAI Codex models",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
 			],
 			"contexts": [
 				"description"
@@ -15445,36 +15799,6 @@
 			]
 		},
 		{
-			"en": "Do not auto-redeem saved Claude resets.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Do not auto-redeem saved Codex resets.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Do not auto-redeem saved {0} resets.",
-			"kind": "template",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
 			"en": "Do not prevent any sleep",
 			"kind": "exact",
 			"files": [
@@ -15485,20 +15809,10 @@
 			]
 		},
 		{
-			"en": "Do not run Claude reset auto-redeem checks.",
-			"kind": "exact",
+			"en": "Do not redeem, and set {0} to no.",
+			"kind": "template",
 			"files": [
-				"pi-coding-agent/src/session/settings.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Do not run the saved-reset auto-redeem check.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
+				"pi-coding-agent/src/session/agent-session.ts"
 			],
 			"contexts": [
 				"description"
@@ -15578,7 +15892,8 @@
 			"en": "Done",
 			"kind": "exact",
 			"files": [
-				"pi-tui/src/overlays/advisor-config.ts"
+				"pi-tui/src/overlays/advisor-config.ts",
+				"pi-tui/src/overlays/agent-hub.ts"
 			],
 			"contexts": [
 				"label"
@@ -15937,6 +16252,16 @@
 			"contexts": [
 				"text()",
 				"title"
+			]
+		},
+		{
+			"en": "Edit & resend",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/transcript-actions.ts"
+			],
+			"contexts": [
+				"label"
 			]
 		},
 		{
@@ -16656,16 +16981,6 @@
 			]
 		},
 		{
-			"en": "Enable the lsp tool for code intelligence (definitions, references, diagnostics, rename)",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/lsp/settings.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
 			"en": "Enable the ratchet eval/hillclimb prelude; /ratchet turns it on for the current session",
 			"kind": "exact",
 			"files": [
@@ -16989,6 +17304,16 @@
 			]
 		},
 		{
+			"en": "Enter a full URL",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "Enter a local:// file name.",
 			"kind": "exact",
 			"files": [
@@ -17009,6 +17334,16 @@
 			]
 		},
 		{
+			"en": "Enter a number",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "Enter a positive number. Decimals round down. Clear the field to make this provider unlimited.",
 			"kind": "exact",
 			"files": [
@@ -17016,6 +17351,16 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "Enter an email address",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -17295,6 +17640,16 @@
 			]
 		},
 		{
+			"en": "Error: pass `body` to replace notes or `append_idea` to add an idea.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/autoresearch/tools/update-notes.ts"
+			],
+			"contexts": [
+				"text"
+			]
+		},
+		{
 			"en": "Error: query parameter required for workspace symbol search",
 			"kind": "exact",
 			"files": [
@@ -17372,12 +17727,32 @@
 			]
 		},
 		{
+			"en": "Esc closes",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"truncateToWidth()"
+			]
+		},
+		{
 			"en": "Escalate past the duck to the devs? Tool name + the confusion, no personal info.",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/modes/interactive-mode.ts"
 			],
 			"contexts": []
+		},
+		{
+			"en": "Escape closes",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"return"
+			]
 		},
 		{
 			"en": "Estimated USD cost for completed chat calls.",
@@ -17559,6 +17934,16 @@
 			],
 			"contexts": [
 				"span()"
+			]
+		},
+		{
+			"en": "Every animation at its own setting (default)",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -17935,6 +18320,16 @@
 			]
 		},
 		{
+			"en": "Expires",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Expiry days",
 			"kind": "exact",
 			"files": [
@@ -18126,6 +18521,16 @@
 			]
 		},
 		{
+			"en": "Extension Transcript Presenters",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/extensibility/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Extension entry \"{0}\" not found",
 			"kind": "template",
 			"files": [
@@ -18143,6 +18548,16 @@
 			],
 			"contexts": [
 				"write()"
+			]
+		},
+		{
+			"en": "Extension links",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/link-browser.ts"
+			],
+			"contexts": [
+				"bold()"
 			]
 		},
 		{
@@ -18208,6 +18623,7 @@
 				"pi-coding-agent/src/modes/controllers/extension-ui-controller.ts"
 			],
 			"contexts": [
+				"Error()",
 				"showStatus()"
 			]
 		},
@@ -20430,10 +20846,21 @@
 			"en": "Fork failed (session not persisted or cancelled)",
 			"kind": "exact",
 			"files": [
-				"pi-coding-agent/src/modes/controllers/command-controller.ts"
+				"pi-coding-agent/src/modes/controllers/command-controller.ts",
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
 			],
 			"contexts": [
 				"showError()"
+			]
+		},
+		{
+			"en": "Fork from here",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/transcript-actions.ts"
+			],
+			"contexts": [
+				"label"
 			]
 		},
 		{
@@ -20484,6 +20911,26 @@
 			],
 			"contexts": [
 				"title"
+			]
+		},
+		{
+			"en": "Forked into a new session",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
+			]
+		},
+		{
+			"en": "Forked into a new session · /resume {0} returns",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
 			]
 		},
 		{
@@ -22241,6 +22688,7 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/apps/git/sidebar.ts",
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/ask-dialog.ts"
 			],
 			"contexts": [
@@ -22471,6 +22919,16 @@
 			]
 		},
 		{
+			"en": "Hindsight outbox unavailable: {0}. Undelivered memories stay on disk.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/hindsight/state.ts"
+			],
+			"contexts": [
+				"notice()"
+			]
+		},
+		{
 			"en": "Hindsight server URL (Cloud or self-hosted)",
 			"kind": "exact",
 			"files": [
@@ -22643,16 +23101,6 @@
 			]
 		},
 		{
-			"en": "Hover",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/tools/lsp.ts"
-			],
-			"contexts": [
-				"label"
-			]
-		},
-		{
 			"en": "How a settled terminal resize refreshes transcript rows retained in terminal scrollback",
 			"kind": "exact",
 			"files": [
@@ -22773,7 +23221,7 @@
 			]
 		},
 		{
-			"en": "How strongly to push delegating work to subagents",
+			"en": "How strongly to push the main agent to delegate work; subagents keep the model's own policy",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/task/settings.ts"
@@ -23766,6 +24214,16 @@
 			]
 		},
 		{
+			"en": "Install omp updates in the background on startup; the next launch runs the new version",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Install registry skills",
 			"kind": "exact",
 			"files": [
@@ -23850,6 +24308,16 @@
 			"contexts": [
 				"notify()",
 				"showStatus()"
+			]
+		},
+		{
+			"en": "Installs in the background; the next launch runs it",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/setup/scenes/updates.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -24427,6 +24895,16 @@
 			]
 		},
 		{
+			"en": "Invalid task.workerThreads: expected a non-negative integer (0 runs subagents on the main thread), got {0}.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
 			"en": "Invalid theme \"{0}\":",
 			"kind": "template",
 			"files": [
@@ -24517,6 +24995,16 @@
 			]
 		},
 		{
+			"en": "Invalid {0}: expected a number from 0 to 1, got {1}.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/spotlight/settings.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
 			"en": "Invalid {0}: expected a positive USD amount, got {1}.",
 			"kind": "template",
 			"files": [
@@ -24551,6 +25039,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/hindsight/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
+			"en": "Isolated subagents use ovnfs checkouts when ovnfs is found; otherwise (and for worktrees) the PAL picks the best available backend",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
 			],
 			"contexts": [
 				"description"
@@ -24840,9 +25338,11 @@
 			"en": "Keep",
 			"kind": "exact",
 			"files": [
-				"pi-coding-agent/src/task/settings.ts"
+				"pi-coding-agent/src/task/settings.ts",
+				"pi-tui/src/html-form/dialog.ts"
 			],
 			"contexts": [
+				"actionButton()",
 				"label"
 			]
 		},
@@ -24894,6 +25394,16 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "Keep omp up to date",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/setup/scenes/updates.ts"
+			],
+			"contexts": [
+				"title"
 			]
 		},
 		{
@@ -25285,6 +25795,16 @@
 			]
 		},
 		{
+			"en": "Language-server integration: the lsp tool, diagnostics on write/edit, and format on write (--no-lsp disables for the run)",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/lsp/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Large Headings (Kitty)",
 			"kind": "exact",
 			"files": [
@@ -25398,9 +25918,11 @@
 			"en": "Late diagnostics",
 			"kind": "exact",
 			"files": [
-				"pi-tui/src/chat/late-diagnostics-message.ts"
+				"pi-tui/src/chat/late-diagnostics-message.ts",
+				"pi-tui/src/chat/transcript-presentation.ts"
 			],
 			"contexts": [
+				"plainHead()",
 				"span()",
 				"title"
 			]
@@ -25697,6 +26219,16 @@
 			]
 		},
 		{
+			"en": "Let extensions draw transcript blocks such as tool calls in full, as one compact row, or hidden; the session, exports and model context are unchanged",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/extensibility/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Let extensions enter and exit plan, vibe, goal, and loop modes via ctx.sessionModes.set(); reading mode state stays available",
 			"kind": "exact",
 			"files": [
@@ -25719,6 +26251,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/hindsight/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
+			"en": "Let standalone chillax drop thinking to the model's lowest effort (models with per-message effort, even mid-turn) and append its hidden notice",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/magic-keywords.ts"
 			],
 			"contexts": [
 				"description"
@@ -25759,16 +26301,6 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/modes/magic-keywords.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Let the PAL pick the best available backend",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/task/settings.ts"
 			],
 			"contexts": [
 				"description"
@@ -25842,6 +26374,27 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "Likely cached",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"value",
+				"var:cached"
+			]
+		},
+		{
+			"en": "Likely cached{0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -27144,16 +27697,6 @@
 			]
 		},
 		{
-			"en": "Locations",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/tools/lsp.ts"
-			],
-			"contexts": [
-				"label"
-			]
-		},
-		{
 			"en": "Log Experiment",
 			"kind": "exact",
 			"files": [
@@ -28219,6 +28762,16 @@
 			]
 		},
 		{
+			"en": "Main thread only",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Make every provider unlimited",
 			"kind": "exact",
 			"files": [
@@ -28625,6 +29178,16 @@
 			]
 		},
 		{
+			"en": "Max Frames Per Second",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Max In-Flight Requests",
 			"kind": "exact",
 			"files": [
@@ -28683,6 +29246,16 @@
 			],
 			"contexts": [
 				"label"
+			]
+		},
+		{
+			"en": "Max frames per second must be a whole number from {0} to {1}, got {2}.",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/frame-rate.ts"
+			],
+			"contexts": [
+				"Error()"
 			]
 		},
 		{
@@ -28986,6 +29559,16 @@
 			]
 		},
 		{
+			"en": "Maximum worker threads for subagents. Up to 8 concurrent subagents run on the main thread; at 9 one worker joins, and one more each time the count doubles (18, 36, 72). Workers stop a minute after no subagent is live in them; 0 keeps every subagent on the main thread",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Measuring the baseline",
 			"kind": "exact",
 			"files": [
@@ -29244,13 +29827,33 @@
 			]
 		},
 		{
-			"en": "Memory retention failed for {0}: {1}",
+			"en": "Memory retention failed; {0} memories kept in the Hindsight outbox for retry: {1}",
 			"kind": "template",
 			"files": [
 				"pi-coding-agent/src/hindsight/state.ts"
 			],
 			"contexts": [
-				"emitNotice()"
+				"notice()"
+			]
+		},
+		{
+			"en": "Memory retention failed; {0} memory kept in the Hindsight outbox for retry: {1}",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/hindsight/state.ts"
+			],
+			"contexts": [
+				"notice()"
+			]
+		},
+		{
+			"en": "Memory retention failed; {0} {1} kept in the Hindsight outbox for retry: {2}",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/hindsight/state.ts"
+			],
+			"contexts": [
+				"notice()"
 			]
 		},
 		{
@@ -29530,6 +30133,16 @@
 			]
 		},
 		{
+			"en": "Milliseconds between frames of every spinner, the terminal title included; 0 shows static glyphs. Unset follows Motion",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Min P",
 			"kind": "exact",
 			"files": [
@@ -29557,6 +30170,16 @@
 			],
 			"contexts": [
 				"fg()"
+			]
+		},
+		{
+			"en": "Minimum",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -30444,6 +31067,26 @@
 			]
 		},
 		{
+			"en": "Motion",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Motion mode must be one of {0}, got {1}.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/config/motion-presets.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
 			"en": "Mount rarely-used (discoverable) tools under xd:// device URLs driven via read/write instead of shipping their schemas on every request. Sessions whose explicit tool list grants read but omits write mount devices through a device-only write transport (only local:// scratch stays writable besides devices). Disable to expose every enabled tool top-level.",
 			"kind": "exact",
 			"files": [
@@ -30818,6 +31461,36 @@
 			]
 		},
 		{
+			"en": "Must be at least {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
+			"en": "Must be at most {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
+			"en": "Must match {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "Mute",
 			"kind": "exact",
 			"files": [
@@ -30939,6 +31612,16 @@
 			]
 		},
 		{
+			"en": "Native shell returned an invalid visualization presentation",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/shell-viz.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
 			"en": "Navigate session tree (switch branches)",
 			"kind": "exact",
 			"files": [
@@ -30997,6 +31680,16 @@
 			],
 			"contexts": [
 				"tip"
+			]
+		},
+		{
+			"en": "Needs at least {0} characters",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -31150,6 +31843,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/export/ttsr-settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
+			"en": "Never spend saved resets for this window.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
 			],
 			"contexts": [
 				"description"
@@ -31325,6 +32028,16 @@
 			]
 		},
 		{
+			"en": "New session",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/transcript-actions.ts"
+			],
+			"contexts": [
+				"detail"
+			]
+		},
+		{
 			"en": "New session started",
 			"kind": "exact",
 			"files": [
@@ -31350,6 +32063,16 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "Next",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"actionButton()"
 			]
 		},
 		{
@@ -31410,6 +32133,36 @@
 			],
 			"contexts": [
 				"tool()"
+			]
+		},
+		{
+			"en": "Next message",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Next message reads ~{0} from cache",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
+			"en": "Next message {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -31738,6 +32491,26 @@
 			]
 		},
 		{
+			"en": "No active session to unpin.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/slash-commands/builtin-lifecycle.ts"
+			],
+			"contexts": [
+				"usage()"
+			]
+		},
+		{
+			"en": "No active session to {0}.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/slash-commands/builtin-lifecycle.ts"
+			],
+			"contexts": [
+				"usage()"
+			]
+		},
+		{
 			"en": "No activity in the last {0} weeks",
 			"kind": "template",
 			"files": [
@@ -31789,6 +32562,16 @@
 			],
 			"contexts": [
 				"empty"
+			]
+		},
+		{
+			"en": "No animation",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -32098,6 +32881,16 @@
 			]
 		},
 		{
+			"en": "No complete bash command available",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "No context window",
 			"kind": "exact",
 			"files": [
@@ -32263,9 +33056,10 @@
 			]
 		},
 		{
-			"en": "No extension links on screen",
+			"en": "No extension links in the transcript",
 			"kind": "exact",
 			"files": [
+				"pi-coding-agent/src/modes/controllers/input-controller.ts",
 				"pi-coding-agent/src/modes/interactive-mode.ts"
 			],
 			"contexts": [
@@ -32676,12 +33470,10 @@
 			"en": "No matches found",
 			"kind": "exact",
 			"files": [
-				"pi-tui/src/tools/ast-grep.ts",
 				"pi-tui/src/tools/grep.ts"
 			],
 			"contexts": [
-				"formatEmptyMessage()",
-				"noteText()"
+				"formatEmptyMessage()"
 			]
 		},
 		{
@@ -33089,13 +33881,11 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/overlays/jobs-panel.ts",
-				"pi-tui/src/tools/debug.ts",
-				"pi-tui/src/tools/lsp.ts"
+				"pi-tui/src/tools/debug.ts"
 			],
 			"contexts": [
 				"noteText()",
 				"text()",
-				"var:firstLine",
 				"var:text"
 			]
 		},
@@ -33214,6 +34004,16 @@
 			]
 		},
 		{
+			"en": "No prompt to resend before this answer",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
+			]
+		},
+		{
 			"en": "No prompts available on connected servers.",
 			"kind": "exact",
 			"files": [
@@ -33257,16 +34057,6 @@
 				"empty",
 				"fg()",
 				"span()"
-			]
-		},
-		{
-			"en": "No question provided",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/tools/ask.ts"
-			],
-			"contexts": [
-				"formatErrorMessage()"
 			]
 		},
 		{
@@ -33466,8 +34256,8 @@
 				"pi-tui/src/tools/lsp.ts"
 			],
 			"contexts": [
-				"fg()",
-				"lspNativeHead()"
+				"lspNativeHead()",
+				"meta"
 			]
 		},
 		{
@@ -34263,6 +35053,26 @@
 			]
 		},
 		{
+			"en": "Not cached",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"value"
+			]
+		},
+		{
+			"en": "Not cached{0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "Not configured",
 			"kind": "exact",
 			"files": [
@@ -34390,6 +35200,7 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/chat/advisor-message.ts",
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/ask-dialog.ts"
 			],
 			"contexts": [
@@ -34401,10 +35212,22 @@
 			"en": "Note for {0}",
 			"kind": "template",
 			"files": [
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/ask-dialog.ts"
 			],
 			"contexts": [
+				"text()",
 				"title"
+			]
+		},
+		{
+			"en": "Note for {0} · {1}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"truncateToWidth()"
 			]
 		},
 		{
@@ -34426,16 +35249,6 @@
 			],
 			"contexts": [
 				"spans"
-			]
-		},
-		{
-			"en": "Note:",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/tools/ask.ts"
-			],
-			"contexts": [
-				"fg()"
 			]
 		},
 		{
@@ -35152,6 +35965,16 @@
 			]
 		},
 		{
+			"en": "One switch over spinners, shimmer, and decorative blink/fade. Streaming text is unaffected (see Max Frames Per Second). A spinner interval you set still wins",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Online (tiny)",
 			"kind": "exact",
 			"files": [
@@ -35609,7 +36432,27 @@
 			]
 		},
 		{
+			"en": "OpenAI Codex WebSockets",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "OpenAI Live Steering",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "OpenAI Responses WebSockets",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
@@ -35626,16 +36469,6 @@
 			],
 			"contexts": [
 				"description"
-			]
-		},
-		{
-			"en": "OpenAI WebSockets",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
-			],
-			"contexts": [
-				"label"
 			]
 		},
 		{
@@ -35797,6 +36630,16 @@
 			]
 		},
 		{
+			"en": "Opt in for catalog-supported standard Responses models; model or request false disables it",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Optional",
 			"kind": "exact",
 			"files": [
@@ -35847,7 +36690,7 @@
 			]
 		},
 		{
-			"en": "Optional SQLite DB path. Defaults to the agent memories directory.",
+			"en": "Optional SQLite DB path; a leading ~ is the home directory. Defaults to the agent memories directory.",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/mnemopi/settings.ts"
@@ -35965,6 +36808,16 @@
 			]
 		},
 		{
+			"en": "Original",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/shell-viz-render.ts"
+			],
+			"contexts": [
+				"fg()"
+			]
+		},
+		{
 			"en": "Original X.org 5x8 glyphs on the 2576px frame, black ink.",
 			"kind": "exact",
 			"files": [
@@ -36024,7 +36877,7 @@
 				"pi-tui/src/render/code-cell.ts",
 				"pi-tui/src/tools/bash.ts",
 				"pi-tui/src/tools/debug.ts",
-				"pi-tui/src/tools/lsp.ts",
+				"pi-tui/src/tools/shell-viz-render.ts",
 				"pi-tui/src/tools/task.ts"
 			],
 			"contexts": [
@@ -36259,6 +37112,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Parked",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/agent-hub.ts"
 			],
 			"contexts": [
 				"label"
@@ -36917,7 +37780,7 @@
 			]
 		},
 		{
-			"en": "Pick an extension link on screen by its tag",
+			"en": "Pick an extension link on screen by its tag; press again to browse the whole transcript",
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/hotkeys-markdown.ts"
@@ -37741,7 +38604,7 @@
 			]
 		},
 		{
-			"en": "Prefer concise responses",
+			"en": "Prefer concise responses (default)",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
@@ -38153,6 +39016,16 @@
 			],
 			"contexts": [
 				"tool()"
+			]
+		},
+		{
+			"en": "Previous/next question  ←/→",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"title"
 			]
 		},
 		{
@@ -38672,6 +39545,16 @@
 			]
 		},
 		{
+			"en": "Prompt Cache",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/command-controller.ts"
+			],
+			"contexts": [
+				"bold()"
+			]
+		},
+		{
 			"en": "Prompt Cache Retention",
 			"kind": "exact",
 			"files": [
@@ -39089,6 +39972,16 @@
 			]
 		},
 		{
+			"en": "Pseudo",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/shell-viz-render.ts"
+			],
+			"contexts": [
+				"fg()"
+			]
+		},
+		{
 			"en": "Public Web",
 			"kind": "exact",
 			"files": [
@@ -39237,6 +40130,16 @@
 			"contexts": []
 		},
 		{
+			"en": "Python",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/transcript-presentation.ts"
+			],
+			"contexts": [
+				"title"
+			]
+		},
+		{
 			"en": "Python (pyright)",
 			"kind": "exact",
 			"files": [
@@ -39331,6 +40234,7 @@
 			"en": "Question",
 			"kind": "exact",
 			"files": [
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/ask-dialog.ts",
 				"pi-tui/src/overlays/btw-history-panel.ts"
 			],
@@ -39343,6 +40247,7 @@
 			"en": "Question  {0}",
 			"kind": "template",
 			"files": [
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/ask-dialog.ts"
 			],
 			"contexts": [
@@ -39505,6 +40410,16 @@
 			],
 			"contexts": [
 				"label"
+			]
+		},
+		{
+			"en": "Quiet, for many panes",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -40257,27 +41172,7 @@
 			]
 		},
 		{
-			"en": "Redeem now and remember yes for future eligible Claude resets.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Redeem now and remember yes for future eligible Codex resets.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Redeem now and remember yes for future eligible {0} resets.",
+			"en": "Redeem now and set {0} to yes.",
 			"kind": "template",
 			"files": [
 				"pi-coding-agent/src/session/agent-session.ts"
@@ -40287,10 +41182,10 @@
 			]
 		},
 		{
-			"en": "References",
+			"en": "Reduced",
 			"kind": "exact",
 			"files": [
-				"pi-tui/src/tools/lsp.ts"
+				"pi-coding-agent/src/modes/settings.ts"
 			],
 			"contexts": [
 				"label"
@@ -40537,6 +41432,16 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "Regular Expression",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/grep.ts"
+			],
+			"contexts": [
+				"highlightCode()"
 			]
 		},
 		{
@@ -41250,6 +42155,16 @@
 			]
 		},
 		{
+			"en": "Replay history/output trimmed to retained limits",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/shell-viz-render.ts"
+			],
+			"contexts": [
+				"fg()"
+			]
+		},
+		{
 			"en": "Replay the transcript at the new width below retained history",
 			"kind": "exact",
 			"files": [
@@ -41648,12 +42563,10 @@
 			"files": [
 				"pi-coding-agent/src/activity/index.ts",
 				"pi-tui/src/overlays/agent-activity.ts",
-				"pi-tui/src/tools/lsp.ts",
 				"pi-tui/src/tools/web-search.ts"
 			],
 			"contexts": [
 				"fg()",
-				"label",
 				"title"
 			]
 		},
@@ -41718,7 +42631,7 @@
 			]
 		},
 		{
-			"en": "Restart omp with the same launch flags, resuming this session",
+			"en": "Restart omp with the same launch flags, resuming this session and its running subagents",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/slash-commands/builtin-lifecycle.ts"
@@ -42185,6 +43098,16 @@
 			]
 		},
 		{
+			"en": "Retry turn",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/transcript-actions.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Retrying the last failed turn.",
 			"kind": "exact",
 			"files": [
@@ -42192,6 +43115,16 @@
 			],
 			"contexts": [
 				"output()"
+			]
+		},
+		{
+			"en": "Retrying the turn",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
 			]
 		},
 		{
@@ -42275,7 +43208,7 @@
 			]
 		},
 		{
-			"en": "Reveal assistant text and streamed tool input smoothly while chunks arrive",
+			"en": "Reveal assistant text and streamed tool input smoothly while chunks arrive (Tern types assistant text out itself)",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/modes/settings.ts"
@@ -42589,8 +43522,58 @@
 			]
 		},
 		{
+			"en": "Rewind to here…",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/transcript-actions.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Rewind undone",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
+			]
+		},
+		{
 			"en": "Rewound to selected point",
 			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
+			]
+		},
+		{
+			"en": "Rewound {0} turn",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
+			]
+		},
+		{
+			"en": "Rewound {0} turns",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
+			]
+		},
+		{
+			"en": "Rewound {0} turn{1}",
+			"kind": "template",
 			"files": [
 				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
 			],
@@ -43045,6 +44028,7 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/apps/autoresearch-dashboard.ts",
+				"pi-tui/src/overlays/agent-hub.ts",
 				"pi-tui/src/overlays/btw-history-panel.ts"
 			],
 			"contexts": [
@@ -43516,6 +44500,7 @@
 			"en": "Save",
 			"kind": "exact",
 			"files": [
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/advisor-config.ts",
 				"pi-tui/src/overlays/model-hub.ts"
 			],
@@ -43711,8 +44696,8 @@
 			]
 		},
 		{
-			"en": "Saved Claude resets are eligible to spend, but auto-redeem is unset and no prompt UI is available. Run `/usage reset` or set claudeResets.autoRedeem.",
-			"kind": "exact",
+			"en": "Saved Claude resets are eligible to spend, but auto-redeem is unset and no prompt UI is available. Run `/usage reset` or set {0}.",
+			"kind": "template",
 			"files": [
 				"pi-coding-agent/src/session/agent-session.ts"
 			],
@@ -43721,28 +44706,8 @@
 			]
 		},
 		{
-			"en": "Saved Claude resets are eligible to spend, but auto-redeem is unset and no prompt UI is available. Run `/usage reset` or set codexResets.autoRedeem.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"emitNotice()"
-			]
-		},
-		{
-			"en": "Saved Codex resets are eligible to spend, but auto-redeem is unset and no prompt UI is available. Run `/usage reset` or set claudeResets.autoRedeem.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"emitNotice()"
-			]
-		},
-		{
-			"en": "Saved Codex resets are eligible to spend, but auto-redeem is unset and no prompt UI is available. Run `/usage reset` or set codexResets.autoRedeem.",
-			"kind": "exact",
+			"en": "Saved Codex resets are eligible to spend, but auto-redeem is unset and no prompt UI is available. Run `/usage reset` or set {0}.",
+			"kind": "template",
 			"files": [
 				"pi-coding-agent/src/session/agent-session.ts"
 			],
@@ -44800,6 +45765,16 @@
 			]
 		},
 		{
+			"en": "Select at least one",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/data.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "Select base branch to compare against",
 			"kind": "exact",
 			"files": [
@@ -44919,7 +45894,7 @@
 			]
 		},
 		{
-			"en": "Select the edit tool variant (replace, patch, hashline, or apply_patch)",
+			"en": "Select the edit tool variant (replace, patch, hashline, or apply_patch); none removes the edit tool and keeps bash enabled",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/edit/settings.ts"
@@ -45075,6 +46050,16 @@
 			],
 			"contexts": [
 				"action"
+			]
+		},
+		{
+			"en": "Send or clear the draft to retry this turn",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
 			]
 		},
 		{
@@ -45799,6 +46784,16 @@
 			]
 		},
 		{
+			"en": "Session close cancelled",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/interactive-mode.ts"
+			],
+			"contexts": [
+				"showStatus()"
+			]
+		},
+		{
 			"en": "Session compacted {0}",
 			"kind": "template",
 			"files": [
@@ -45890,6 +46885,16 @@
 			],
 			"contexts": [
 				"head"
+			]
+		},
+		{
+			"en": "Session is not pinned.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/slash-commands/builtin-lifecycle.ts"
+			],
+			"contexts": [
+				"output()"
 			]
 		},
 		{
@@ -46288,6 +47293,26 @@
 			]
 		},
 		{
+			"en": "Settings.applyMirrorState expects a worker mirror",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/config/settings.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
+			"en": "Settings.installGlobalMirror expects a worker mirror",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/config/settings.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
 			"en": "Setup",
 			"kind": "exact",
 			"files": [
@@ -46365,6 +47390,16 @@
 			],
 			"contexts": [
 				"showError()"
+			]
+		},
+		{
+			"en": "Shape tool output and rank find results with Stencil Spotlight, and log each shaped result to the session",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/spotlight/settings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -46647,6 +47682,16 @@
 			]
 		},
 		{
+			"en": "Shell Visualization",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Shimmer",
 			"kind": "exact",
 			"files": [
@@ -46671,6 +47716,7 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/apps/git/sidebar.ts",
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/agent-hub.ts",
 				"pi-tui/src/overlays/ask-dialog.ts"
 			],
@@ -46789,6 +47835,16 @@
 			]
 		},
 		{
+			"en": "Show a notice on startup; run omp update yourself",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/setup/scenes/updates.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Show advisor status",
 			"kind": "exact",
 			"files": [
@@ -46843,6 +47899,16 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/autoresearch/index.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
+			"en": "Show bash commands as an interactive execution visualization instead of plain shell commands",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
 			],
 			"contexts": [
 				"description"
@@ -48501,6 +49567,26 @@
 			]
 		},
 		{
+			"en": "Space pause · ←/→ step · r reset · l live · Home/End seek · −/+ speed {0}× · {1} / {2}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"var:header"
+			]
+		},
+		{
+			"en": "Space play · ←/→ step · r reset · l live · Home/End seek · −/+ speed {0}× · {1} / {2}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"var:header"
+			]
+		},
+		{
 			"en": "Spaghetti code? Try complaining with /omfg",
 			"kind": "exact",
 			"files": [
@@ -48742,6 +49828,36 @@
 			]
 		},
 		{
+			"en": "Spend Claude Cedar or Juniper resets on 5-hour-only blocks and on expiring grants whose fullest covered limit is 5h.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"resetWindowSetting()"
+			]
+		},
+		{
+			"en": "Spend Claude Cedar resets on weekly or model-scoped blocks and on expiring grants whose fullest covered limit is weekly.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"resetWindowSetting()"
+			]
+		},
+		{
+			"en": "Spend Claude Fable launch resets, which restore Fable weekly usage plus the 5h window. Only this setting governs them.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"resetWindowSetting()"
+			]
+		},
+		{
 			"en": "Spend a saved provider rate-limit reset",
 			"kind": "exact",
 			"files": [
@@ -48770,27 +49886,7 @@
 			]
 		},
 		{
-			"en": "Spend eligible Claude Cedar or Juniper resets automatically. Cedar is spent only for covered limits; Juniper can only recover a sole 5-hour block. unset asks before the first spend (with no prompt UI, it spends only a reset expiring within 5 minutes), yes spends without prompting, and no disables blocked recovery and expiry salvage.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Spend eligible Claude resets without prompting.",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
-			],
-			"contexts": [
-				"description"
-			]
-		},
-		{
-			"en": "Spend eligible saved resets without prompting.",
+			"en": "Spend eligible saved resets without asking.",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
@@ -48820,13 +49916,23 @@
 			]
 		},
 		{
-			"en": "Spend saved Codex rate-limit resets automatically: restore an account blocked by an exhausted 5h or weekly window when a turn is stuck and no other account can take over, and salvage credits that are about to expire. unset asks before the first spend (with no prompt UI, it spends only a reset expiring within 5 minutes), yes spends without prompting, and no disables both checks.",
+			"en": "Spend saved Codex resets on 5-hour-only blocks and on expiring credits whose fullest chat window is 5h.",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/session/settings.ts"
 			],
 			"contexts": [
-				"description"
+				"resetWindowSetting()"
+			]
+		},
+		{
+			"en": "Spend saved Codex resets on weekly blocks and on expiring credits whose fullest chat window is weekly. A block known only from a short 429 wait needs both Codex windows.",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"resetWindowSetting()"
 			]
 		},
 		{
@@ -48860,62 +49966,42 @@
 			]
 		},
 		{
-			"en": "Spending a saved Claude reset for {0} before it expires in {1}; auto-redeem is unset and no prompt UI is available. Set claudeResets.autoRedeem to no to let resets expire instead.",
-			"kind": "template",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"emitNotice()"
-			]
-		},
-		{
-			"en": "Spending a saved Claude reset for {0} before it expires in {1}; auto-redeem is unset and no prompt UI is available. Set codexResets.autoRedeem to no to let resets expire instead.",
-			"kind": "template",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"emitNotice()"
-			]
-		},
-		{
-			"en": "Spending a saved Codex reset for {0} before it expires in {1}; auto-redeem is unset and no prompt UI is available. Set claudeResets.autoRedeem to no to let resets expire instead.",
-			"kind": "template",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"emitNotice()"
-			]
-		},
-		{
-			"en": "Spending a saved Codex reset for {0} before it expires in {1}; auto-redeem is unset and no prompt UI is available. Set codexResets.autoRedeem to no to let resets expire instead.",
-			"kind": "template",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"emitNotice()"
-			]
-		},
-		{
-			"en": "Spending a saved {0} reset for {1} before it expires in {2}; auto-redeem is unset and no prompt UI is available. Set {3} to no to let resets expire instead.",
-			"kind": "template",
-			"files": [
-				"pi-coding-agent/src/session/agent-session.ts"
-			],
-			"contexts": [
-				"emitNotice()"
-			]
-		},
-		{
 			"en": "Spill it to the devs? Tool name + the tea, never anything personal.",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/modes/interactive-mode.ts"
 			],
 			"contexts": []
+		},
+		{
+			"en": "Spinner Interval (ms)",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Spinner interval must be {0} (static) or a whole number of milliseconds ≥ {1}, got {2}.",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/spinner-clock.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
+			"en": "Spinners at 250 ms, no shimmer, no blink/fade",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
 		},
 		{
 			"en": "Split",
@@ -48925,6 +50011,37 @@
 			],
 			"contexts": [
 				"label"
+			]
+		},
+		{
+			"en": "Split stacked (terminal too narrow for side-by-side)",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/shell-viz-render.ts"
+			],
+			"contexts": [
+				"fg()"
+			]
+		},
+		{
+			"en": "Spotlight Experiment",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/spotlight/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Spotlight: passthrough",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"aria",
+				"title"
 			]
 		},
 		{
@@ -49483,10 +50600,40 @@
 			]
 		},
 		{
+			"en": "State",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Static",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Static commit message",
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
+			"en": "Static spinners and title, no shimmer, no blink/fade",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/settings.ts"
 			],
 			"contexts": [
 				"description"
@@ -50054,6 +51201,26 @@
 			]
 		},
 		{
+			"en": "Subagent Worker Threads",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Subagent worker exited: {0}",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/thread/services/telemetry.ts"
+			],
+			"contexts": [
+				"message"
+			]
+		},
+		{
 			"en": "Subagents",
 			"kind": "exact",
 			"files": [
@@ -50079,12 +51246,14 @@
 			"en": "Submit",
 			"kind": "exact",
 			"files": [
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/ask-dialog.ts",
 				"pi-tui/src/overlays/hook-editor.ts",
 				"pi-tui/src/overlays/hook-input.ts"
 			],
 			"contexts": [
 				"actionButton()",
+				"fg()",
 				"label"
 			]
 		},
@@ -50166,6 +51335,16 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "Submits these answers in {0}s",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"var:lead"
 			]
 		},
 		{
@@ -50386,20 +51565,24 @@
 			"en": "Supervised process completed",
 			"kind": "exact",
 			"files": [
+				"pi-tui/src/chat/transcript-presentation.ts",
 				"pi-tui/src/chat/transcript-render-helpers.ts"
 			],
 			"contexts": [
-				"var:label"
+				"var:label",
+				"var:title"
 			]
 		},
 		{
 			"en": "Supervised process failed",
 			"kind": "exact",
 			"files": [
+				"pi-tui/src/chat/transcript-presentation.ts",
 				"pi-tui/src/chat/transcript-render-helpers.ts"
 			],
 			"contexts": [
-				"var:label"
+				"var:label",
+				"var:title"
 			]
 		},
 		{
@@ -50632,16 +51815,6 @@
 			"kind": "exact",
 			"files": [
 				"pi-coding-agent/src/modes/settings.ts"
-			],
-			"contexts": [
-				"label"
-			]
-		},
-		{
-			"en": "Symbols",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/tools/lsp.ts"
 			],
 			"contexts": [
 				"label"
@@ -51376,6 +52549,16 @@
 			]
 		},
 		{
+			"en": "That message is no longer on this branch",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
+			],
+			"contexts": [
+				"showStatus()"
+			]
+		},
+		{
 			"en": "That subagent is gone — open the hub for live agents",
 			"kind": "exact",
 			"files": [
@@ -51633,6 +52816,16 @@
 			],
 			"contexts": [
 				"DOMException()"
+			]
+		},
+		{
+			"en": "The original of this result is gone ({0}).",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/modes/interactive-mode.ts"
+			],
+			"contexts": [
+				"showWarning()"
 			]
 		},
 		{
@@ -51903,6 +53096,16 @@
 			],
 			"contexts": [
 				"span()"
+			]
+		},
+		{
+			"en": "The would-be text of this held-out result is gone ({0}).",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/modes/interactive-mode.ts"
+			],
+			"contexts": [
+				"showWarning()"
 			]
 		},
 		{
@@ -52469,6 +53672,16 @@
 			]
 		},
 		{
+			"en": "Tier",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Tight",
 			"kind": "exact",
 			"files": [
@@ -52738,6 +53951,16 @@
 			],
 			"contexts": [
 				"label"
+			]
+		},
+		{
+			"en": "To composer",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/transcript-actions.ts"
+			],
+			"contexts": [
+				"detail"
 			]
 		},
 		{
@@ -53156,6 +54379,16 @@
 			],
 			"contexts": [
 				"showStatus()"
+			]
+		},
+		{
+			"en": "Too many links on one row to tag; widen the terminal · PgUp/PgDn scroll · Esc close",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/link-browser.ts"
+			],
+			"contexts": [
+				"fg()"
 			]
 		},
 		{
@@ -53923,6 +55156,16 @@
 			]
 		},
 		{
+			"en": "Type a tag or click a link · PgUp/PgDn scroll · Esc close",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/link-browser.ts"
+			],
+			"contexts": [
+				"fg()"
+			]
+		},
+		{
 			"en": "Type here",
 			"kind": "exact",
 			"files": [
@@ -54173,6 +55416,7 @@
 			"en": "Undo",
 			"kind": "exact",
 			"files": [
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts",
 				"pi-tui/src/keybindings.ts",
 				"pi-tui/src/prompt/prompt-action-autocomplete.ts"
 			],
@@ -54609,6 +55853,16 @@
 			]
 		},
 		{
+			"en": "Unknown setting {0}",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/thread/services/settings.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
 			"en": "Unknown setting: {0}",
 			"kind": "template",
 			"files": [
@@ -54710,6 +55964,16 @@
 			],
 			"contexts": [
 				"pickerAction()"
+			]
+		},
+		{
+			"en": "Unpin a session from the top of the resume list",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/slash-commands/builtin-lifecycle.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -54966,6 +56230,46 @@
 			]
 		},
 		{
+			"en": "Up to 1 worker",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Up to 2 workers",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Up to 4 workers",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "Up to 8 workers",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Update",
 			"kind": "exact",
 			"files": [
@@ -55106,6 +56410,16 @@
 			"contexts": [
 				"output()",
 				"showStatus()"
+			]
+		},
+		{
+			"en": "Updates install through whatever installed omp: the standalone binary, Homebrew, mise, bun, or npm. Change this later in /settings.",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/setup/scenes/updates.ts"
+			],
+			"contexts": [
+				"var:INTRO"
 			]
 		},
 		{
@@ -55622,6 +56936,16 @@
 			]
 		},
 		{
+			"en": "Use Codex model defaults",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Use DeepSeek-style in-band tool calls.",
 			"kind": "exact",
 			"files": [
@@ -55830,16 +57154,6 @@
 			],
 			"contexts": [
 				"confirm"
-			]
-		},
-		{
-			"en": "Use model/provider default websocket behavior",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
-			],
-			"contexts": [
-				"description"
 			]
 		},
 		{
@@ -56858,7 +58172,8 @@
 			"en": "Wait for the current response to finish or abort it before forking.",
 			"kind": "exact",
 			"files": [
-				"pi-coding-agent/src/modes/controllers/command-controller.ts"
+				"pi-coding-agent/src/modes/controllers/command-controller.ts",
+				"pi-coding-agent/src/modes/controllers/selector-controller.ts"
 			],
 			"contexts": [
 				"showWarning()"
@@ -57119,6 +58434,16 @@
 			]
 		},
 		{
+			"en": "Warming",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
 			"en": "Warning",
 			"kind": "exact",
 			"files": [
@@ -57333,6 +58658,16 @@
 			]
 		},
 		{
+			"en": "WebSocket policy for OpenAI Codex models only",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
 			"en": "Webhook URL",
 			"kind": "exact",
 			"files": [
@@ -57340,16 +58675,6 @@
 			],
 			"contexts": [
 				"label"
-			]
-		},
-		{
-			"en": "Websocket policy for OpenAI Codex models (auto uses model defaults, on forces, off disables)",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/session/settings.ts"
-			],
-			"contexts": [
-				"description"
 			]
 		},
 		{
@@ -57793,6 +59118,16 @@
 			"contexts": [
 				"note()",
 				"var:location"
+			]
+		},
+		{
+			"en": "Why not cached",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"label"
 			]
 		},
 		{
@@ -59185,23 +60520,13 @@
 			]
 		},
 		{
-			"en": "apply: false",
+			"en": "applyMirrorBatch: this registry is not a mirror",
 			"kind": "exact",
 			"files": [
-				"pi-tui/src/tools/lsp.ts"
+				"pi-coding-agent/src/config/model-registry.ts"
 			],
 			"contexts": [
-				"fg()"
-			]
-		},
-		{
-			"en": "apply: true",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/tools/lsp.ts"
-			],
-			"contexts": [
-				"fg()"
+				"Error()"
 			]
 		},
 		{
@@ -59331,8 +60656,7 @@
 				"pi-tui/src/tools/ask.ts"
 			],
 			"contexts": [
-				"fg()",
-				"span()"
+				"var:TIMED_OUT_NOTE"
 			]
 		},
 		{
@@ -59610,6 +60934,16 @@
 			]
 		},
 		{
+			"en": "budget {0} of {1} chars · cutoff {2}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"push()"
+			]
+		},
+		{
 			"en": "build output",
 			"kind": "exact",
 			"files": [
@@ -59641,6 +60975,36 @@
 			]
 		},
 		{
+			"en": "c/i/d/e/u layers · s split:off · ↑↓/Tab select · Enter details · PgUp/PgDn scroll",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"var:header"
+			]
+		},
+		{
+			"en": "c/i/d/e/u layers · s split:on · ↑↓/Tab select · Enter details · PgUp/PgDn scroll",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"var:header"
+			]
+		},
+		{
+			"en": "c/i/d/e/u layers · s split:{0} · ↑↓/Tab select · Enter details · PgUp/PgDn scroll",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"var:header"
+			]
+		},
+		{
 			"en": "cabal test",
 			"kind": "exact",
 			"files": [
@@ -59668,6 +61032,16 @@
 			],
 			"contexts": [
 				"var:head"
+			]
+		},
+		{
+			"en": "cache retention setting changed",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -59798,17 +61172,6 @@
 			],
 			"contexts": [
 				"var:versus"
-			]
-		},
-		{
-			"en": "chat redirect",
-			"kind": "exact",
-			"files": [
-				"pi-tui/src/tools/ask.ts"
-			],
-			"contexts": [
-				"askHead()",
-				"meta"
 			]
 		},
 		{
@@ -59992,6 +61355,16 @@
 			]
 		},
 		{
+			"en": "context was compacted",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "contextFiles.extra cannot list a built-in context file ({0})",
 			"kind": "template",
 			"files": [
@@ -60158,6 +61531,16 @@
 			]
 		},
 		{
+			"en": "custom:{0}:{1}",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/modes/controllers/session-focus-controller.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "customMessageLabel strong",
 			"kind": "exact",
 			"files": [
@@ -60169,6 +61552,36 @@
 			"contexts": [
 				"mark()",
 				"span()"
+			]
+		},
+		{
+			"en": "cut by the budget",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"b"
+			]
+		},
+		{
+			"en": "cut by the budget: line {0} ({1}) took the last {2} chars",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
+			"en": "cut though hot",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"label"
 			]
 		},
 		{
@@ -60354,14 +61767,6 @@
 			]
 		},
 		{
-			"en": "diff --git",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/extensibility/custom-commands/bundled/review/diff.ts"
-			],
-			"contexts": []
-		},
-		{
 			"en": "dim em",
 			"kind": "exact",
 			"files": [
@@ -60545,6 +61950,36 @@
 			]
 		},
 		{
+			"en": "enter save · blank removes · esc keep",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
+			"en": "enter save · blank removes · esc keep · sent only if chosen",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
+			"en": "enter save · blank removes · esc keep{0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "env api key",
 			"kind": "exact",
 			"files": [
@@ -60678,6 +62113,16 @@
 			]
 		},
 		{
+			"en": "expired at {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "expires in {0}",
 			"kind": "template",
 			"files": [
@@ -60774,6 +62219,16 @@
 			]
 		},
 		{
+			"en": "fewer ▾",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"text()"
+			]
+		},
+		{
 			"en": "file note",
 			"kind": "exact",
 			"files": [
@@ -60813,6 +62268,16 @@
 			],
 			"contexts": [
 				"v"
+			]
+		},
+		{
+			"en": "first {0} of {1} lines",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"push()"
 			]
 		},
 		{
@@ -61009,6 +62474,26 @@
 			]
 		},
 		{
+			"en": "held out",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"var:why"
+			]
+		},
+		{
+			"en": "held out (the model saw the original) ·",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:heldOut"
+			]
+		},
+		{
 			"en": "here:{0}:{1}",
 			"kind": "template",
 			"files": [
@@ -61160,6 +62645,16 @@
 			]
 		},
 		{
+			"en": "incomplete todo",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/transcript-presentation.ts"
+			],
+			"contexts": [
+				"countOf()"
+			]
+		},
+		{
 			"en": "inherit (current)",
 			"kind": "exact",
 			"files": [
@@ -61186,6 +62681,16 @@
 				"pi-coding-agent/src/slash-commands/builtin-collaboration.ts"
 			],
 			"contexts": []
+		},
+		{
+			"en": "input, select, textarea",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/parse.ts"
+			],
+			"contexts": [
+				"var:CONTROL_SELECTOR"
+			]
 		},
 		{
 			"en": "ins num",
@@ -61411,6 +62916,66 @@
 			]
 		},
 		{
+			"en": "kept as context",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "kept as structure",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "kept by score",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "kept whole for editing",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"var:why"
+			]
+		},
+		{
+			"en": "kept whole for editing (the model saw the original) ·",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:heldOut"
+			]
+		},
+		{
+			"en": "kept {0} of {1} lines",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"var:facts"
+			]
+		},
+		{
 			"en": "key mismatch",
 			"kind": "exact",
 			"files": [
@@ -61448,6 +63013,16 @@
 			],
 			"contexts": [
 				"#setStatus()"
+			]
+		},
+		{
+			"en": "larger than {0} MiB",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/media.ts"
+			],
+			"contexts": [
+				"Error()"
 			]
 		},
 		{
@@ -61504,7 +63079,6 @@
 			"en": "limit reached",
 			"kind": "exact",
 			"files": [
-				"pi-tui/src/tools/ast-edit.ts",
 				"pi-tui/src/tools/ast-grep.ts"
 			],
 			"contexts": [
@@ -61555,13 +63129,13 @@
 			]
 		},
 		{
-			"en": "line {0}, col {1}",
+			"en": "line {0} · the hottest line this fold hides",
 			"kind": "template",
 			"files": [
-				"pi-tui/src/tools/lsp.ts"
+				"pi-tui/src/overlays/spotlight-sheet.ts"
 			],
 			"contexts": [
-				"fg()"
+				"span()"
 			]
 		},
 		{
@@ -61811,6 +63385,16 @@
 			],
 			"contexts": [
 				"error"
+			]
+		},
+		{
+			"en": "malformed data: URI",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/media.ts"
+			],
+			"contexts": [
+				"Error()"
 			]
 		},
 		{
@@ -62149,6 +63733,16 @@
 			]
 		},
 		{
+			"en": "model changed: {0} → {1}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "model discovery timed out after {0}ms",
 			"kind": "template",
 			"files": [
@@ -62304,7 +63898,18 @@
 			"en": "more line",
 			"kind": "exact",
 			"files": [
-				"pi-tui/src/chat/read-tool-group.ts"
+				"pi-tui/src/chat/read-tool-group.ts",
+				"pi-tui/src/tools/ask.ts"
+			],
+			"contexts": [
+				"formatCount()"
+			]
+		},
+		{
+			"en": "more option",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/tools/ask.ts"
 			],
 			"contexts": [
 				"formatCount()"
@@ -62375,7 +63980,8 @@
 			"kind": "exact",
 			"files": [
 				"pi-tui/src/chat/compaction-summary-message.ts",
-				"pi-tui/src/overlays/annotation-overlay.ts"
+				"pi-tui/src/overlays/annotation-overlay.ts",
+				"pi-tui/src/overlays/spotlight-sheet.ts"
 			],
 			"contexts": [
 				"span()"
@@ -62452,6 +64058,16 @@
 			]
 		},
 		{
+			"en": "never (the provider keeps it)",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"value"
+			]
+		},
+		{
 			"en": "new file",
 			"kind": "exact",
 			"files": [
@@ -62482,13 +64098,13 @@
 			]
 		},
 		{
-			"en": "new name: {0}",
-			"kind": "template",
+			"en": "next launch",
+			"kind": "exact",
 			"files": [
-				"pi-tui/src/tools/lsp.ts"
+				"pi-tui/src/prompt/welcome.ts"
 			],
 			"contexts": [
-				"fg()"
+				"span()"
 			]
 		},
 		{
@@ -62499,6 +64115,16 @@
 			],
 			"contexts": [
 				"var:stateLabel"
+			]
+		},
+		{
+			"en": "next refresh {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"var:next"
 			]
 		},
 		{
@@ -62601,6 +64227,16 @@
 			],
 			"contexts": [
 				"var:status"
+			]
+		},
+		{
+			"en": "no expiry",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"value"
 			]
 		},
 		{
@@ -62826,6 +64462,16 @@
 			]
 		},
 		{
+			"en": "not a PNG, JPEG, GIF, WebP or SVG image",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/media.ts"
+			],
+			"contexts": [
+				"Error()"
+			]
+		},
+		{
 			"en": "not connected",
 			"kind": "exact",
 			"files": [
@@ -62894,6 +64540,26 @@
 			],
 			"contexts": [
 				"key()"
+			]
+		},
+		{
+			"en": "notes the model saw",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:heading"
+			]
+		},
+		{
+			"en": "notes the model would have seen",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:heading"
 			]
 		},
 		{
@@ -63167,6 +64833,16 @@
 			]
 		},
 		{
+			"en": "omp's refresh found the entry gone",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "on a role to add it",
 			"kind": "exact",
 			"files": [
@@ -63234,6 +64910,26 @@
 			],
 			"contexts": [
 				"fg()"
+			]
+		},
+		{
+			"en": "ovnfs Binary",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"label"
+			]
+		},
+		{
+			"en": "ovnfs executable; unset looks for `ovnfs` on PATH. When it is found, ovnfs checkouts (copy-on-write views of a folder, ready in about a second at any size) serve every separate copy: the system prompt tells agents to open checkouts instead of git worktrees or copies, and isolated subagents (when allowed, with `isolation.backend` on auto) run in checkouts instead of native clones",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/task/settings.ts"
+			],
+			"contexts": [
+				"description"
 			]
 		},
 		{
@@ -63420,6 +65116,16 @@
 			"contexts": [
 				"fg()",
 				"label"
+			]
+		},
+		{
+			"en": "pick one anywhere in the transcript",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/link-browser.ts"
+			],
+			"contexts": [
+				"fg()"
 			]
 		},
 		{
@@ -63842,6 +65548,16 @@
 			]
 		},
 		{
+			"en": "re-sends up to {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "read write",
 			"kind": "exact",
 			"files": [
@@ -63862,6 +65578,16 @@
 			]
 		},
 		{
+			"en": "reads ~{0} from cache, sends ~{1} new",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"value"
+			]
+		},
+		{
 			"en": "ready timed out",
 			"kind": "exact",
 			"files": [
@@ -63879,6 +65605,26 @@
 			],
 			"contexts": [
 				"row"
+			]
+		},
+		{
+			"en": "refresh scheduled",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"var:next"
+			]
+		},
+		{
+			"en": "refreshing now",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -63956,22 +65702,6 @@
 			"contexts": [
 				"var:where"
 			]
-		},
-		{
-			"en": "rename from",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/extensibility/custom-commands/bundled/review/diff.ts"
-			],
-			"contexts": []
-		},
-		{
-			"en": "rename to",
-			"kind": "exact",
-			"files": [
-				"pi-coding-agent/src/extensibility/custom-commands/bundled/review/diff.ts"
-			],
-			"contexts": []
 		},
 		{
 			"en": "rendering sample…",
@@ -64166,6 +65896,26 @@
 			]
 		},
 		{
+			"en": "row tint, left to right: {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:label"
+			]
+		},
+		{
+			"en": "row tint: {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:label"
+			]
+		},
+		{
 			"en": "run #{0}",
 			"kind": "template",
 			"files": [
@@ -64223,6 +65973,16 @@
 			],
 			"contexts": [
 				"keys()"
+			]
+		},
+		{
+			"en": "saved {0} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:saved"
 			]
 		},
 		{
@@ -64305,6 +66065,16 @@
 			"contexts": [
 				"span()",
 				"var:search"
+			]
+		},
+		{
+			"en": "seen in an earlier call",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"r"
 			]
 		},
 		{
@@ -64468,6 +66238,16 @@
 			],
 			"contexts": [
 				"push()"
+			]
+		},
+		{
+			"en": "settings thread service: malformed boot globals",
+			"kind": "exact",
+			"files": [
+				"pi-coding-agent/src/thread/services/settings.ts"
+			],
+			"contexts": [
+				"Error()"
 			]
 		},
 		{
@@ -64637,6 +66417,56 @@
 			],
 			"contexts": [
 				"fail()"
+			]
+		},
+		{
+			"en": "spotlight: held out · would save {0} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
+			"en": "spotlight: kept whole for editing · would save {0} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
+			"en": "spotlight: reshaped, +{0} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
+			"en": "spotlight: saved {0} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
+			"en": "spotlight: {0} · would save {1} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"span()"
 			]
 		},
 		{
@@ -65158,6 +66988,16 @@
 			]
 		},
 		{
+			"en": "system prompt changed",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "systemPrompt preview:",
 			"kind": "exact",
 			"files": [
@@ -65420,6 +67260,16 @@
 			]
 		},
 		{
+			"en": "thinking level changed: {0} → {1}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "thinking with `efforts` (or legacy `levels`/`minLevel`+`maxLevel`)",
 			"kind": "exact",
 			"files": [
@@ -65473,6 +67323,17 @@
 				"note",
 				"span()",
 				"text"
+			]
+		},
+		{
+			"en": "timed out, {0}/{1} passages verified",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/tools/find.ts"
+			],
+			"contexts": [
+				"fg()",
+				"span()"
 			]
 		},
 		{
@@ -65758,6 +67619,16 @@
 			]
 		},
 		{
+			"en": "tool set changed",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "toolDiffAdded mono",
 			"kind": "exact",
 			"files": [
@@ -65791,6 +67662,7 @@
 			"en": "toolTitle strong",
 			"kind": "exact",
 			"files": [
+				"pi-tui/src/chat/transcript-presentation.ts",
 				"pi-tui/src/tools/native-view.ts",
 				"pi-tui/src/tools/wait.ts"
 			],
@@ -65853,6 +67725,16 @@
 				"pi-tui/src/apps/debug/protocol-probe.ts"
 			],
 			"contexts": []
+		},
+		{
+			"en": "truncated JPEG data: no EOI marker",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/chat/image-loading.ts"
+			],
+			"contexts": [
+				"return"
+			]
 		},
 		{
 			"en": "ttft {0}s",
@@ -66003,6 +67885,16 @@
 			"contexts": [
 				"keys()",
 				"label"
+			]
+		},
+		{
+			"en": "type your own",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"var:OTHER_PLACEHOLDER"
 			]
 		},
 		{
@@ -66188,6 +68080,16 @@
 			]
 		},
 		{
+			"en": "update failed",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/prompt/welcome.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
 			"en": "updated {0} ago",
 			"kind": "template",
 			"files": [
@@ -66267,6 +68169,36 @@
 			],
 			"contexts": [
 				"description"
+			]
+		},
+		{
+			"en": "v  Raw ↔ Pseudo  ·  Pseudo",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"var:headings"
+			]
+		},
+		{
+			"en": "v  Raw ↔ Pseudo  ·  Raw",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"var:headings"
+			]
+		},
+		{
+			"en": "v  Raw ↔ Pseudo  ·  {0}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/apps/shell-visualizer.ts"
+			],
+			"contexts": [
+				"var:headings"
 			]
 		},
 		{
@@ -66767,6 +68699,26 @@
 			]
 		},
 		{
+			"en": "would keep {0} of {1} lines",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"var:facts"
+			]
+		},
+		{
+			"en": "would save {0} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"var:saved"
+			]
+		},
+		{
 			"en": "wrong array",
 			"kind": "exact",
 			"files": [
@@ -66964,6 +68916,16 @@
 			],
 			"contexts": [
 				"title"
+			]
+		},
+		{
+			"en": "{0} (+{1} more)",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -67364,6 +69326,36 @@
 			],
 			"contexts": [
 				"fg()"
+			]
+		},
+		{
+			"en": "{0} Hindsight memories moved to {1} (refused by the server, malformed, or undelivered for 7 days); review within 30 days.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/hindsight/state.ts"
+			],
+			"contexts": [
+				"notice()"
+			]
+		},
+		{
+			"en": "{0} Hindsight memory moved to {1} (refused by the server, malformed, or undelivered for 7 days); review within 30 days.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/hindsight/state.ts"
+			],
+			"contexts": [
+				"notice()"
+			]
+		},
+		{
+			"en": "{0} Hindsight {1} moved to {2} (refused by the server, malformed, or undelivered for 7 days); review within 30 days.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/hindsight/state.ts"
+			],
+			"contexts": [
+				"notice()"
 			]
 		},
 		{
@@ -67974,13 +69966,54 @@
 			]
 		},
 		{
+			"en": "{0} answer needs a fix",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
+			"en": "{0} answer needs a fix · Submit opens the first",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"spans"
+			]
+		},
+		{
 			"en": "{0} answer · {1}",
 			"kind": "template",
 			"files": [
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/ask-dialog.ts"
 			],
 			"contexts": [
 				"return"
+			]
+		},
+		{
+			"en": "{0} answers need a fix",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
+			"en": "{0} answers need a fix · Submit opens the first",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"spans"
 			]
 		},
 		{
@@ -68054,6 +70087,16 @@
 			]
 		},
 		{
+			"en": "{0} background jobs completed",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/transcript-presentation.ts"
+			],
+			"contexts": [
+				"var:title"
+			]
+		},
+		{
 			"en": "{0} background tasks completed",
 			"kind": "template",
 			"files": [
@@ -68101,6 +70144,16 @@
 			],
 			"contexts": [
 				"span()"
+			]
+		},
+		{
+			"en": "{0} by score",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"push()"
 			]
 		},
 		{
@@ -68329,6 +70382,16 @@
 			]
 		},
 		{
+			"en": "{0} cut though hot",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"push()"
+			]
+		},
+		{
 			"en": "{0} cycle is empty — press {1} on a role to add it",
 			"kind": "template",
 			"files": [
@@ -68426,6 +70489,16 @@
 			],
 			"contexts": [
 				"var:turn"
+			]
+		},
+		{
+			"en": "{0} fell too far behind and was dropped; they can rejoin",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/collab/host.ts"
+			],
+			"contexts": [
+				"emitNotice()"
 			]
 		},
 		{
@@ -68657,6 +70730,16 @@
 			],
 			"contexts": [
 				"text"
+			]
+		},
+		{
+			"en": "{0} highlight · {1} choose{2} · {3} close",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -69409,6 +71492,26 @@
 			]
 		},
 		{
+			"en": "{0} next field",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"var:hints"
+			]
+		},
+		{
+			"en": "{0} next launch",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/prompt/welcome.ts"
+			],
+			"contexts": [
+				"fg()"
+			]
+		},
+		{
 			"en": "{0} not found - some features may be limited",
 			"kind": "template",
 			"files": [
@@ -69526,6 +71629,16 @@
 			"kind": "template",
 			"files": [
 				"pi-tui/src/overlays/hook-editor.ts"
+			],
+			"contexts": [
+				"var:hint"
+			]
+		},
+		{
+			"en": "{0} overview · {1} back",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/usage-dashboard.ts"
 			],
 			"contexts": [
 				"var:hint"
@@ -70324,6 +72437,26 @@
 			]
 		},
 		{
+			"en": "{0} spotlight: held out · would save {1} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"spans"
+			]
+		},
+		{
+			"en": "{0} spotlight: kept whole for editing · would save {1} toks",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"spans"
+			]
+		},
+		{
 			"en": "{0} step  {1}  {2} filter  {3} rewind  {4}{5} expand  {6} cancel",
 			"kind": "template",
 			"files": [
@@ -70531,6 +72664,16 @@
 			],
 			"contexts": [
 				"hint"
+			]
+		},
+		{
+			"en": "{0} to fix",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"fg()"
 			]
 		},
 		{
@@ -70835,6 +72978,26 @@
 			]
 		},
 		{
+			"en": "{0} unset asks before spending and never spends without a prompt; yes spends without asking; no never spends.",
+			"kind": "template",
+			"files": [
+				"pi-coding-agent/src/session/settings.ts"
+			],
+			"contexts": [
+				"description"
+			]
+		},
+		{
+			"en": "{0} update failed",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/prompt/welcome.ts"
+			],
+			"contexts": [
+				"fg()"
+			]
+		},
+		{
 			"en": "{0} usable now",
 			"kind": "template",
 			"files": [
@@ -70947,6 +73110,16 @@
 			]
 		},
 		{
+			"en": "{0} {1} a fix",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
 			"en": "{0} {1} archived from earlier segments",
 			"kind": "template",
 			"files": [
@@ -70974,6 +73147,16 @@
 			],
 			"contexts": [
 				"var:turn"
+			]
+		},
+		{
+			"en": "{0} {1} of {2} lines",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/chat/spotlight.ts"
+			],
+			"contexts": [
+				"var:facts"
 			]
 		},
 		{
@@ -71329,6 +73512,16 @@
 			],
 			"contexts": [
 				"var:clickHint"
+			]
+		},
+		{
+			"en": "{0}, gives up by {1}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/status-line/prompt-cache.ts"
+			],
+			"contexts": [
+				"return"
 			]
 		},
 		{
@@ -71849,7 +74042,7 @@
 			]
 		},
 		{
-			"en": "{0}r refresh · {1} back",
+			"en": "{0}r refresh · {1} details · {2} close",
 			"kind": "template",
 			"files": [
 				"pi-tui/src/overlays/usage-dashboard.ts"
@@ -71859,7 +74052,7 @@
 			]
 		},
 		{
-			"en": "{0}r refresh · {1} details · {2} close",
+			"en": "{0}r refresh · {1} overview · {2} back",
 			"kind": "template",
 			"files": [
 				"pi-tui/src/overlays/usage-dashboard.ts"
@@ -72050,6 +74243,16 @@
 		},
 		{
 			"en": "{0}{1}{2} details · {3} close",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/usage-dashboard.ts"
+			],
+			"contexts": [
+				"var:hint"
+			]
+		},
+		{
+			"en": "{0}{1}{2} overview · {3} back",
 			"kind": "template",
 			"files": [
 				"pi-tui/src/overlays/usage-dashboard.ts"
@@ -72384,6 +74587,16 @@
 			]
 		},
 		{
+			"en": "· Submit opens the first",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
 			"en": "· Submit still sends the questions",
 			"kind": "exact",
 			"files": [
@@ -72431,6 +74644,26 @@
 			],
 			"contexts": [
 				"fg()"
+			]
+		},
+		{
+			"en": "· line {0}{1}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"span()"
+			]
+		},
+		{
+			"en": "· sent only if chosen",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"var:unsent"
 			]
 		},
 		{
@@ -72652,6 +74885,16 @@
 			],
 			"contexts": [
 				"fg()"
+			]
+		},
+		{
+			"en": "· {0} note",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"var:noteHint"
 			]
 		},
 		{
@@ -73140,7 +75383,6 @@
 				"pi-tui/src/render/render-utils.ts",
 				"pi-tui/src/tools/eval.ts",
 				"pi-tui/src/tools/json-tree.ts",
-				"pi-tui/src/tools/lsp.ts",
 				"pi-tui/src/tools/memory.ts"
 			],
 			"contexts": [
@@ -73198,7 +75440,6 @@
 				"pi-tui/src/tools/edit.ts",
 				"pi-tui/src/tools/eval.ts",
 				"pi-tui/src/tools/json-tree.ts",
-				"pi-tui/src/tools/lsp.ts",
 				"pi-tui/src/tools/memory.ts"
 			],
 			"contexts": [
@@ -73482,6 +75723,16 @@
 			]
 		},
 		{
+			"en": "▣ {0} — couldn't load: {1}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"return"
+			]
+		},
+		{
 			"en": "◉ max",
 			"kind": "exact",
 			"files": [
@@ -73745,13 +75996,25 @@
 			]
 		},
 		{
+			"en": "✎ draft",
+			"kind": "exact",
+			"files": [
+				"pi-tui/src/html-form/dialog.ts"
+			],
+			"contexts": [
+				"text"
+			]
+		},
+		{
 			"en": "✎ note",
 			"kind": "exact",
 			"files": [
+				"pi-tui/src/html-form/dialog.ts",
 				"pi-tui/src/overlays/ask-dialog.ts"
 			],
 			"contexts": [
-				"fg()"
+				"fg()",
+				"text"
 			]
 		},
 		{
@@ -73844,6 +76107,26 @@
 			],
 			"contexts": [
 				"var:resetText"
+			]
+		},
+		{
+			"en": "⭐ Spotlight · held out (the model saw the original) · {0} · {1} → {2} chars · {3}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"head"
+			]
+		},
+		{
+			"en": "⭐ Spotlight · kept whole for editing (the model saw the original) · {0} · {1} → {2} chars · {3}",
+			"kind": "template",
+			"files": [
+				"pi-tui/src/overlays/spotlight-sheet.ts"
+			],
+			"contexts": [
+				"head"
 			]
 		},
 		{
